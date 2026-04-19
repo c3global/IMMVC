@@ -6,7 +6,6 @@ export const LINKS = {
   VIP: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   ASSESSMENT: '[ASSESSMENT_LINK]',
   VIP_SWAG_BAG: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
-  PODCAST: '[BEYOND_BORDERS_PODCAST_LINK]',
   INSTAGRAM: 'https://www.instagram.com/immvc2026',
   TIKTOK: 'https://www.tiktok.com/@immvc2026',
   FACEBOOK: 'https://www.facebook.com/DrCharityTVPage',

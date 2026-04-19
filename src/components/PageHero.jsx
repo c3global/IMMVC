@@ -1,18 +1,31 @@
 import FadeIn from './FadeIn';
 
-export default function PageHero({ eyebrow, title, accent, intro, children }) {
+export default function PageHero({
+  eyebrow,
+  title,
+  accent,
+  intro,
+  children,
+  tone = 'ink',
+}) {
+  const bg = {
+    ink: 'hero-ink text-white',
+    blush: 'hero-blush text-ink',
+    teal: 'hero-teal text-white',
+  }[tone];
+
   return (
-    <section className="relative overflow-hidden hero-bg hero-grain pt-40 pb-24 sm:pt-48 sm:pb-32">
-      <div className="container-x relative text-center text-white">
+    <section className={`relative overflow-hidden ${bg} pt-36 pb-24 sm:pt-40 sm:pb-28 grain`}>
+      <div className="container-x relative text-center">
         {eyebrow && (
           <FadeIn>
-            <p className="text-xs uppercase tracking-[0.4em] text-blush mb-6">
+            <p className={`text-[11px] uppercase tracking-[0.38em] mb-6 ${tone === 'blush' ? 'text-magenta' : 'text-blush'}`}>
               {eyebrow}
             </p>
           </FadeIn>
         )}
         <FadeIn delay={120}>
-          <h1 className="display-font text-5xl sm:text-7xl lg:text-8xl leading-[1.02] tracking-wide">
+          <h1 className="h-hero">
             {title} {accent && <span className="gold-text">{accent}</span>}
           </h1>
         </FadeIn>
@@ -21,7 +34,7 @@ export default function PageHero({ eyebrow, title, accent, intro, children }) {
         </FadeIn>
         {intro && (
           <FadeIn delay={320}>
-            <p className="mx-auto mt-8 max-w-3xl font-serif italic text-lg sm:text-xl text-white/85 leading-relaxed">
+            <p className={`mx-auto mt-8 max-w-3xl font-serif italic text-lg sm:text-xl leading-relaxed ${tone === 'blush' ? 'text-ink/75' : 'text-white/85'}`}>
               {intro}
             </p>
           </FadeIn>

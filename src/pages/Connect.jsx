@@ -17,14 +17,15 @@ export default function Connect() {
   return (
     <>
       <PageHero
+        tone="blush"
         eyebrow="Connect"
         title="Let’s stay"
-        accent="close."
-        intro="Reach out, dream out loud, or invite Dr. CK into your room. We read every note and we’d love to hear from you."
+        accent="in touch."
+        intro="Reach out, partner with us, or bring Dr. CK to your stage. We read every note."
       >
         <a href={LINKS.EMAIL} className="btn-primary">Email Us</a>
-        <a href={LINKS.PODCAST} target="_blank" rel="noreferrer" className="btn-ghost">
-          Listen to the Podcast
+        <a href={LINKS.BOOKING} target="_blank" rel="noreferrer" className="btn-dark">
+          Book Dr. CK
         </a>
       </PageHero>
 
@@ -39,20 +40,19 @@ export default function Connect() {
             </h2>
             <GoldDivider center={false} className="mt-6" />
             <p className="mt-6 text-ink/75 leading-relaxed">
-              Whether you’re a future attendee, a possible partner, a media
-              outlet, or just someone with a story to share — we want to hear
-              from you.
+              Whether you’re a future attendee, partner, media outlet, or just
+              someone with a story to share — we want to hear from you.
             </p>
-            <ul className="mt-8 space-y-3 text-ink/80">
+            <ul className="mt-8 space-y-5 text-ink/80">
               <li>
                 <span className="eyebrow block mb-1">Email</span>
-                <a href={LINKS.EMAIL} className="font-serif text-xl text-magenta hover:text-coral transition">
+                <a href={LINKS.EMAIL} className="font-serif text-lg text-magenta hover:text-coral transition">
                   hello@mamasandmentors.com
                 </a>
               </li>
               <li>
-                <span className="eyebrow block mb-1">Speaking & Booking</span>
-                <a href={LINKS.BOOKING} target="_blank" rel="noreferrer" className="font-serif text-xl text-magenta hover:text-coral transition">
+                <span className="eyebrow block mb-1">Speaking &amp; Booking</span>
+                <a href={LINKS.BOOKING} target="_blank" rel="noreferrer" className="font-serif text-lg text-magenta hover:text-coral transition">
                   Submit a Booking Request →
                 </a>
               </li>
@@ -69,11 +69,10 @@ export default function Connect() {
             >
               {submitted ? (
                 <div className="text-center py-12">
-                  <span className="display-font text-7xl gold-text">Thank you</span>
+                  <p className="display-font text-5xl gold-text">Thank you</p>
                   <div className="gold-rule mx-auto mt-4 w-24" />
                   <p className="mt-6 font-serif italic text-ink/75 text-lg">
-                    Your note has been received. We’ll be in touch soon — keep
-                    an eye on your inbox.
+                    Your note has been received. We’ll be in touch soon.
                   </p>
                 </div>
               ) : (
@@ -83,9 +82,9 @@ export default function Connect() {
                     <Field label="Email" name="email" type="email" required />
                   </div>
                   <Field label="Subject" name="subject" />
-                  <Field label="What’s on your heart?" name="message" textarea required />
+                  <Field label="Your message" name="message" textarea required />
                   <p className="text-xs text-ink/50 uppercase tracking-[0.22em]">
-                    Placeholder form — connect to your form provider
+                    Placeholder form — connect to your provider at launch
                   </p>
                   <button type="submit" className="btn-primary w-full">
                     Send Note →
@@ -97,67 +96,50 @@ export default function Connect() {
         </div>
       </section>
 
-      {/* PODCAST + SOCIAL */}
-      <section className="section bg-luxe-dark text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-magenta-glow opacity-50" />
-        <div className="container-x relative grid lg:grid-cols-12 gap-12 items-center">
-          <FadeIn className="lg:col-span-7">
-            <p className="eyebrow text-blush">Beyond Borders Podcast</p>
+      {/* SOCIAL */}
+      <section className="section bg-blush-fade">
+        <div className="container-x">
+          <FadeIn className="text-center max-w-3xl mx-auto">
+            <p className="eyebrow">Find Us Everywhere</p>
             <h2 className="h-serif mt-4">
-              Globally minded.
-              <span className="gold-text"> Faith-driven.</span> Always real.
+              Follow along.
+              <span className="gold-text"> Share the movement.</span>
             </h2>
-            <GoldDivider center={false} className="mt-6" />
-            <p className="mt-6 text-white/85 leading-relaxed">
-              Hosted by Dr. CK, the <strong>Beyond Borders</strong> podcast is a
-              weekly conversation for women navigating leadership, identity,
-              and legacy across cultures. New episodes drop weekly — wherever
-              you press play.
-            </p>
-            <div className="mt-8">
-              <a href={LINKS.PODCAST} target="_blank" rel="noreferrer" className="btn-primary">
-                Listen Now →
-              </a>
-            </div>
+            <GoldDivider className="mt-8" />
           </FadeIn>
 
-          <FadeIn delay={120} className="lg:col-span-5">
-            <div className="luxe-card">
-              <p className="eyebrow text-blush">Find Us Everywhere</p>
-              <div className="gold-rule mt-4 w-12" />
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                {SOCIALS.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-center gap-3 rounded-2xl border border-gold/40 px-4 py-4 transition hover:border-gold hover:bg-white/5"
-                  >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-magenta to-coral text-white text-xs font-bold tracking-wider">
-                      {s.icon}
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {SOCIALS.map((s, i) => (
+              <FadeIn key={s.label} delay={i * 80}>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="glam-card h-full flex items-center gap-4 group"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-magenta to-coral text-white text-xs font-bold tracking-wider shrink-0">
+                    {s.icon}
+                  </span>
+                  <span className="flex flex-col leading-tight min-w-0">
+                    <span className="font-serif text-lg text-ink/90 group-hover:text-magenta transition">
+                      {s.label}
                     </span>
-                    <span className="flex min-w-0 flex-col leading-tight">
-                      <span className="font-serif text-lg group-hover:text-gold transition truncate">
-                        {s.label}
-                      </span>
-                      <span className="text-[11px] uppercase tracking-[0.22em] text-white/60 truncate">
-                        {s.handle}
-                      </span>
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-ink/55 truncate">
+                      {s.handle}
                     </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
+                  </span>
+                </a>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section bg-blush-fade text-center">
+      <section className="section bg-white text-center">
         <div className="container-x">
           <FadeIn>
-            <h2 className="display-font text-5xl sm:text-6xl">
+            <h2 className="h-display">
               We can’t wait to
               <span className="gold-text"> meet you.</span>
             </h2>
@@ -184,13 +166,7 @@ function Field({ label, name, type = 'text', textarea, required }) {
     <label className="block">
       <span className="eyebrow block mb-2">{label}</span>
       {textarea ? (
-        <textarea
-          name={name}
-          rows={5}
-          required={required}
-          className={cls}
-          placeholder="Share what’s on your heart..."
-        />
+        <textarea name={name} rows={5} required={required} className={cls} placeholder="Share with us..." />
       ) : (
         <input name={name} type={type} required={required} className={cls} />
       )}

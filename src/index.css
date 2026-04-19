@@ -2,13 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Wonderful Branding';
-  src: url('/fonts/WonderfulBrandingPersonalUse-Wyrgz.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* ------------------------------------------------------------------
+ * Display font note:
+ * The "Wonderful Branding" free .otf embeds a "Personal Use Only /
+ * Din Studio" watermark in every glyph, which renders visibly on any
+ * public-facing site. It has been disabled until a commercial license
+ * is obtained. Display type falls back to Italiana + Playfair Display
+ * (both free / open-license Google Fonts).
+ * ------------------------------------------------------------------ */
 
 :root {
   color-scheme: light;
@@ -30,24 +31,27 @@ body {
   }
 
   .display-font {
-    font-family: 'Wonderful Branding', 'Playfair Display', serif;
+    font-family: 'Italiana', 'Playfair Display', Georgia, serif;
     letter-spacing: 0.01em;
   }
 
+  .script-font {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* Solid metallic gold — no shimmer, no pale highlight bleed. */
   .gold-text {
     background: linear-gradient(
-      120deg,
-      #b58a1d 0%,
-      #f7e7a3 30%,
-      #D4AF37 55%,
-      #f7e7a3 75%,
-      #b58a1d 100%
+      180deg,
+      #c9a24a 0%,
+      #b8913d 50%,
+      #8f6b1c 100%
     );
-    background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: shimmer 8s linear infinite;
   }
 
   .gold-rule {
@@ -55,19 +59,15 @@ body {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      #D4AF37 20%,
-      #f7e7a3 50%,
-      #D4AF37 80%,
+      rgba(184, 145, 61, 0.9) 20%,
+      #b8913d 50%,
+      rgba(184, 145, 61, 0.9) 80%,
       transparent 100%
     );
   }
 
   .gold-border {
-    position: relative;
-    border: 1px solid rgba(212, 175, 55, 0.55);
-    box-shadow:
-      0 0 0 1px rgba(212, 175, 55, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(184, 145, 61, 0.6);
   }
 
   .btn {
@@ -77,102 +77,137 @@ body {
   .btn-primary {
     @apply btn text-white;
     background: linear-gradient(135deg, #db3d9e 0%, #ff2768 100%);
-    box-shadow: 0 18px 40px -18px rgba(219, 61, 158, 0.7),
-      inset 0 0 0 1px rgba(212, 175, 55, 0.55);
+    box-shadow: 0 18px 40px -18px rgba(219, 61, 158, 0.7);
   }
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 26px 55px -18px rgba(219, 61, 158, 0.85),
-      inset 0 0 0 1px rgba(212, 175, 55, 0.85);
+    box-shadow: 0 26px 55px -18px rgba(219, 61, 158, 0.85);
+  }
+
+  .btn-teal {
+    @apply btn text-white;
+    background: linear-gradient(135deg, #079fa6 0%, #05e0e9 100%);
+    box-shadow: 0 18px 40px -18px rgba(7, 159, 166, 0.6);
+  }
+  .btn-teal:hover {
+    transform: translateY(-2px);
   }
 
   .btn-ghost {
     @apply btn;
     color: #fff;
     background: transparent;
-    border: 1px solid rgba(212, 175, 55, 0.7);
-    backdrop-filter: blur(6px);
+    border: 1px solid rgba(184, 145, 61, 0.75);
   }
   .btn-ghost:hover {
-    background: rgba(212, 175, 55, 0.12);
-    border-color: #f7e7a3;
+    background: rgba(184, 145, 61, 0.15);
+    border-color: #c9a24a;
     color: #fff;
   }
 
   .btn-dark {
     @apply btn text-white;
     background: linear-gradient(135deg, #16121d 0%, #0b0b10 100%);
-    border: 1px solid rgba(212, 175, 55, 0.55);
+    border: 1px solid rgba(184, 145, 61, 0.55);
   }
   .btn-dark:hover {
-    border-color: #f7e7a3;
+    border-color: #c9a24a;
+    transform: translateY(-2px);
+  }
+
+  .btn-light {
+    @apply btn text-ink;
+    background: #fff;
+    border: 1px solid rgba(11, 11, 16, 0.12);
+  }
+  .btn-light:hover {
+    border-color: #b8913d;
     transform: translateY(-2px);
   }
 
   .glam-card {
     @apply relative rounded-3xl bg-white p-8 transition-transform duration-500;
     box-shadow:
-      0 25px 60px -28px rgba(11, 11, 16, 0.25),
-      inset 0 0 0 1px rgba(212, 175, 55, 0.35);
+      0 20px 50px -28px rgba(11, 11, 16, 0.18),
+      inset 0 0 0 1px rgba(184, 145, 61, 0.25);
   }
   .glam-card:hover {
     transform: translateY(-4px);
     box-shadow:
-      0 35px 80px -30px rgba(219, 61, 158, 0.35),
-      inset 0 0 0 1px rgba(212, 175, 55, 0.7);
+      0 30px 70px -30px rgba(219, 61, 158, 0.25),
+      inset 0 0 0 1px rgba(184, 145, 61, 0.5);
   }
 
   .luxe-card {
     @apply relative rounded-3xl p-8 text-white transition-transform duration-500;
-    background: linear-gradient(160deg, #16121d 0%, #0b0b10 100%);
+    background: linear-gradient(160deg, #1b1424 0%, #0b0b10 100%);
     box-shadow:
       0 30px 80px -30px rgba(0, 0, 0, 0.6),
-      inset 0 0 0 1px rgba(212, 175, 55, 0.45);
+      inset 0 0 0 1px rgba(184, 145, 61, 0.35);
   }
   .luxe-card:hover {
     transform: translateY(-4px);
     box-shadow:
       0 40px 90px -30px rgba(0, 0, 0, 0.7),
-      inset 0 0 0 1px rgba(247, 231, 163, 0.7);
+      inset 0 0 0 1px rgba(201, 162, 74, 0.6);
   }
 
   .eyebrow {
-    @apply text-xs font-bold uppercase tracking-[0.32em] text-magenta;
+    @apply text-[11px] font-bold uppercase tracking-[0.32em] text-magenta;
   }
 
   .section {
     @apply py-20 sm:py-28;
   }
 
+  /* Display headline sizing — editorial, not billboard. */
   .h-display {
-    @apply display-font text-5xl sm:text-6xl lg:text-7xl leading-[1.05];
+    @apply display-font text-4xl sm:text-5xl lg:text-6xl leading-[1.05];
   }
 
   .h-serif {
-    @apply font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight;
+    @apply font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] font-semibold;
+  }
+
+  .h-hero {
+    @apply display-font text-5xl sm:text-6xl lg:text-[5.5rem] leading-[1.02];
   }
 }
 
-/* ---------- Hero Background Sparkle ---------- */
-.hero-bg {
+/* ---------- Hero Backgrounds ---------- */
+.hero-ink {
   background:
-    radial-gradient(circle at 20% 20%, rgba(219, 61, 158, 0.35), transparent 55%),
-    radial-gradient(circle at 80% 30%, rgba(7, 159, 166, 0.28), transparent 55%),
-    radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.18), transparent 60%),
+    radial-gradient(circle at 18% 22%, rgba(219, 61, 158, 0.35), transparent 55%),
+    radial-gradient(circle at 82% 30%, rgba(7, 159, 166, 0.28), transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(184, 145, 61, 0.12), transparent 60%),
     linear-gradient(135deg, #0b0b10 0%, #1a0f1c 55%, #0b0b10 100%);
 }
 
-.hero-grain::after {
+.hero-blush {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(219, 61, 158, 0.18), transparent 55%),
+    radial-gradient(circle at 10% 90%, rgba(7, 159, 166, 0.15), transparent 55%),
+    linear-gradient(180deg, #fff 0%, #ffe6ee 60%, #ffc4d4 100%);
+}
+
+.hero-teal {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(5, 224, 233, 0.25), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(219, 61, 158, 0.25), transparent 55%),
+    linear-gradient(135deg, #052e33 0%, #083f45 55%, #052e33 100%);
+}
+
+.grain::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   background-image: radial-gradient(
-    rgba(255, 255, 255, 0.06) 1px,
+    rgba(255, 255, 255, 0.05) 1px,
     transparent 1px
   );
   background-size: 3px 3px;
-  opacity: 0.35;
+  opacity: 0.3;
   mix-blend-mode: overlay;
 }
 
@@ -188,7 +223,7 @@ body {
   transform: translateY(0);
 }
 
-/* ---------- Scrollbar polish ---------- */
+/* ---------- Selection ---------- */
 ::selection {
   background: rgba(219, 61, 158, 0.85);
   color: #fff;

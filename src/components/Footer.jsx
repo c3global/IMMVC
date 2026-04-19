@@ -1,30 +1,21 @@
 import { Link } from 'react-router-dom';
+import Wordmark from './Wordmark';
 import { LINKS } from '../data/content';
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-white">
-      <div className="absolute inset-0 bg-magenta-glow opacity-60 pointer-events-none" />
       <div className="absolute inset-x-0 top-0 gold-rule opacity-80" />
 
       <div className="container-x relative grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-magenta to-coral shadow-glam">
-              <span className="display-font text-white text-2xl leading-none">M</span>
-            </span>
-            <div>
-              <p className="display-font text-2xl leading-none">
-                Mamas <span className="gold-text">&amp;</span> Mentors
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.32em] text-blush/80 mt-1">
-                International
-              </p>
-            </div>
-          </div>
-          <p className="text-sm text-white/70 leading-relaxed">
-            A faith-led nonprofit movement celebrating motherhood and otherhood
-            at every stage of life.
+          <Wordmark tone="light" />
+          <p className="text-sm text-white/70 leading-relaxed max-w-xs">
+            A faith-led nonprofit celebrating motherhood and otherhood at every
+            stage of life.
+          </p>
+          <p className="text-[10px] uppercase tracking-[0.28em] text-white/40 pt-2">
+            Logo asset to be provided
           </p>
         </div>
 
@@ -57,11 +48,6 @@ export default function Footer() {
                 Take the Assessment
               </a>
             </li>
-            <li>
-              <a href={LINKS.VIP_SWAG_BAG} className="hover:text-gold transition" target="_blank" rel="noreferrer">
-                VIP Swag Bag
-              </a>
-            </li>
           </ul>
         </div>
 
@@ -73,7 +59,6 @@ export default function Footer() {
             <li><a href={LINKS.TIKTOK} target="_blank" rel="noreferrer" className="hover:text-gold transition">TikTok · @immvc2026</a></li>
             <li><a href={LINKS.FACEBOOK} target="_blank" rel="noreferrer" className="hover:text-gold transition">Facebook · Dr. Charity TV</a></li>
             <li><a href={LINKS.YOUTUBE} target="_blank" rel="noreferrer" className="hover:text-gold transition">YouTube · Dr. Charity TV</a></li>
-            <li><a href={LINKS.PODCAST} target="_blank" rel="noreferrer" className="hover:text-gold transition">Beyond Borders Podcast</a></li>
           </ul>
         </div>
       </div>

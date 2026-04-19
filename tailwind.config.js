@@ -14,8 +14,9 @@ export default {
         dusk: '#16121d',
       },
       fontFamily: {
-        display: ['"Wonderful Branding"', 'Playfair Display', 'serif'],
+        display: ['Italiana', '"Playfair Display"', 'Georgia', 'serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        script: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
         sans: ['Lato', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
