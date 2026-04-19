@@ -1,9 +1,9 @@
 // Centralized site content & link placeholders for Mamas and Mentors International.
-// Swap placeholders with real GoHighLevel URLs when ready.
+// Swap remaining bracketed placeholders with the real URLs as they're confirmed.
 
 export const LINKS = {
-  REGISTER: '[REGISTER_LINK]',
-  VIP: '[VIP_LINK]',
+  REGISTER: 'https://register.mamasandmentors.com',
+  VIP: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   ASSESSMENT: '[ASSESSMENT_LINK]',
   VIP_SWAG_BAG: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   PODCAST: '[BEYOND_BORDERS_PODCAST_LINK]',
@@ -89,8 +89,6 @@ export const VIP_PERKS = [
     color: 'teal',
     title: 'IMMVC VIP Swag Bag',
     body: 'Speaker gifts and bonuses handpicked just for you.',
-    link: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
-    linkLabel: 'Peek inside the Swag Bag',
   },
 ];
 
