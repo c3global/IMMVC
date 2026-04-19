@@ -5,10 +5,10 @@ import GoldDivider from '../components/GoldDivider';
 import { LINKS } from '../data/content';
 
 const SOCIALS = [
-  { label: 'Instagram', href: LINKS.INSTAGRAM, icon: 'IG' },
-  { label: 'Facebook', href: LINKS.FACEBOOK, icon: 'FB' },
-  { label: 'YouTube', href: LINKS.YOUTUBE, icon: 'YT' },
-  { label: 'LinkedIn', href: LINKS.LINKEDIN, icon: 'IN' },
+  { label: 'Instagram', handle: '@immvc2026', href: LINKS.INSTAGRAM, icon: 'IG' },
+  { label: 'TikTok', handle: '@immvc2026', href: LINKS.TIKTOK, icon: 'TT' },
+  { label: 'Facebook', handle: 'Dr. Charity TV', href: LINKS.FACEBOOK, icon: 'FB' },
+  { label: 'YouTube', handle: 'Dr. Charity TV', href: LINKS.YOUTUBE, icon: 'YT' },
 ];
 
 export default function Connect() {
@@ -134,11 +134,16 @@ export default function Connect() {
                     rel="noreferrer"
                     className="group flex items-center gap-3 rounded-2xl border border-gold/40 px-4 py-4 transition hover:border-gold hover:bg-white/5"
                   >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-magenta to-coral text-white text-xs font-bold tracking-wider">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-magenta to-coral text-white text-xs font-bold tracking-wider">
                       {s.icon}
                     </span>
-                    <span className="font-serif text-lg group-hover:text-gold transition">
-                      {s.label}
+                    <span className="flex min-w-0 flex-col leading-tight">
+                      <span className="font-serif text-lg group-hover:text-gold transition truncate">
+                        {s.label}
+                      </span>
+                      <span className="text-[11px] uppercase tracking-[0.22em] text-white/60 truncate">
+                        {s.handle}
+                      </span>
                     </span>
                   </a>
                 ))}

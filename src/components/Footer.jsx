@@ -69,10 +69,11 @@ export default function Footer() {
           <h4 className="eyebrow text-blush mb-4">Stay Close</h4>
           <ul className="space-y-2 text-sm text-white/80">
             <li><a href={LINKS.EMAIL} className="hover:text-gold transition">hello@mamasandmentors.com</a></li>
-            <li><a href={LINKS.INSTAGRAM} className="hover:text-gold transition">Instagram</a></li>
-            <li><a href={LINKS.FACEBOOK} className="hover:text-gold transition">Facebook</a></li>
-            <li><a href={LINKS.YOUTUBE} className="hover:text-gold transition">YouTube</a></li>
-            <li><a href={LINKS.PODCAST} className="hover:text-gold transition">Beyond Borders Podcast</a></li>
+            <li><a href={LINKS.INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-gold transition">Instagram · @immvc2026</a></li>
+            <li><a href={LINKS.TIKTOK} target="_blank" rel="noreferrer" className="hover:text-gold transition">TikTok · @immvc2026</a></li>
+            <li><a href={LINKS.FACEBOOK} target="_blank" rel="noreferrer" className="hover:text-gold transition">Facebook · Dr. Charity TV</a></li>
+            <li><a href={LINKS.YOUTUBE} target="_blank" rel="noreferrer" className="hover:text-gold transition">YouTube · Dr. Charity TV</a></li>
+            <li><a href={LINKS.PODCAST} target="_blank" rel="noreferrer" className="hover:text-gold transition">Beyond Borders Podcast</a></li>
           </ul>
         </div>
       </div>
