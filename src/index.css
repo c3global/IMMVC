@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Wonderful Branding';
+  src: url('/fonts/WonderfulBrandingPersonalUse-Wyrgz.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-ink bg-white antialiased;
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}
+
+/* ---------- Reusable Glam Utilities ---------- */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .display-font {
+    font-family: 'Wonderful Branding', 'Playfair Display', serif;
+    letter-spacing: 0.01em;
+  }
+
+  .gold-text {
+    background: linear-gradient(
+      120deg,
+      #b58a1d 0%,
+      #f7e7a3 30%,
+      #D4AF37 55%,
+      #f7e7a3 75%,
+      #b58a1d 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 8s linear infinite;
+  }
+
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #D4AF37 20%,
+      #f7e7a3 50%,
+      #D4AF37 80%,
+      transparent 100%
+    );
+  }
+
+  .gold-border {
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    box-shadow:
+      0 0 0 1px rgba(212, 175, 55, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold uppercase tracking-[0.18em] transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background: linear-gradient(135deg, #db3d9e 0%, #ff2768 100%);
+    box-shadow: 0 18px 40px -18px rgba(219, 61, 158, 0.7),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.55);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 26px 55px -18px rgba(219, 61, 158, 0.85),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.85);
+  }
+
+  .btn-ghost {
+    @apply btn;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.7);
+    backdrop-filter: blur(6px);
+  }
+  .btn-ghost:hover {
+    background: rgba(212, 175, 55, 0.12);
+    border-color: #f7e7a3;
+    color: #fff;
+  }
+
+  .btn-dark {
+    @apply btn text-white;
+    background: linear-gradient(135deg, #16121d 0%, #0b0b10 100%);
+    border: 1px solid rgba(212, 175, 55, 0.55);
+  }
+  .btn-dark:hover {
+    border-color: #f7e7a3;
+    transform: translateY(-2px);
+  }
+
+  .glam-card {
+    @apply relative rounded-3xl bg-white p-8 transition-transform duration-500;
+    box-shadow:
+      0 25px 60px -28px rgba(11, 11, 16, 0.25),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.35);
+  }
+  .glam-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 35px 80px -30px rgba(219, 61, 158, 0.35),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.7);
+  }
+
+  .luxe-card {
+    @apply relative rounded-3xl p-8 text-white transition-transform duration-500;
+    background: linear-gradient(160deg, #16121d 0%, #0b0b10 100%);
+    box-shadow:
+      0 30px 80px -30px rgba(0, 0, 0, 0.6),
+      inset 0 0 0 1px rgba(212, 175, 55, 0.45);
+  }
+  .luxe-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 40px 90px -30px rgba(0, 0, 0, 0.7),
+      inset 0 0 0 1px rgba(247, 231, 163, 0.7);
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.32em] text-magenta;
+  }
+
+  .section {
+    @apply py-20 sm:py-28;
+  }
+
+  .h-display {
+    @apply display-font text-5xl sm:text-6xl lg:text-7xl leading-[1.05];
+  }
+
+  .h-serif {
+    @apply font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight;
+  }
+}
+
+/* ---------- Hero Background Sparkle ---------- */
+.hero-bg {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(219, 61, 158, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(7, 159, 166, 0.28), transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.18), transparent 60%),
+    linear-gradient(135deg, #0b0b10 0%, #1a0f1c 55%, #0b0b10 100%);
+}
+
+.hero-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+}
+
+/* ---------- Fade-in on scroll ---------- */
+.fade-in-init {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  will-change: opacity, transform;
+}
+.fade-in-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Scrollbar polish ---------- */
+::selection {
+  background: rgba(219, 61, 158, 0.85);
+  color: #fff;
+}
