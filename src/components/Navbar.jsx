@@ -1,16 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import Wordmark from './Wordmark';
-import { LINKS } from '../data/content';
-
-const NAV = [
-  { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/immvc', label: 'IMMVC' },
-  { to: '/community', label: 'Community' },
-  { to: '/resources', label: 'Resource Hub' },
-  { to: '/connect', label: 'Connect' },
-];
+import Logo from './Logo';
+import { LINKS, NAV_PRIMARY } from '../data/content';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,24 +21,24 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-ink/85 backdrop-blur-xl border-b border-gold/30'
-          : 'bg-gradient-to-b from-ink/60 to-transparent backdrop-blur-sm'
+          ? 'bg-white/95 backdrop-blur-xl border-b border-[var(--c-gold)]/40 shadow-[0_4px_20px_-12px_rgba(20,16,27,0.15)]'
+          : 'bg-white/80 backdrop-blur-sm border-b border-transparent'
       }`}
     >
-      <div className="container-x flex items-center justify-between py-4">
-        <Link to="/" className="flex items-center gap-3 group" aria-label="Mamas & Mentors International home">
-          <Wordmark tone="light" />
+      <div className="container-x flex items-center justify-between gap-4 py-3">
+        <Link to="/" aria-label="Mamas & Mentors International home" className="shrink-0">
+          <Logo variant="color" height={scrolled ? 44 : 52} className="transition-all duration-500" />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
-          {NAV.map((item) => (
+        <nav className="hidden xl:flex items-center gap-7">
+          {NAV_PRIMARY.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `relative text-[11px] font-semibold uppercase tracking-[0.22em] transition-colors duration-300 ${
-                  isActive ? 'text-white' : 'text-white/70 hover:text-white'
+                `relative text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 whitespace-nowrap ${
+                  isActive ? 'text-magenta' : 'text-ink/75 hover:text-magenta'
                 }`
               }
             >
@@ -55,9 +46,11 @@ export default function Navbar() {
                 <>
                   {item.label}
                   <span
-                    className={`absolute -bottom-2 left-1/2 h-px w-6 -translate-x-1/2 bg-gold transition-opacity duration-300 ${
-                      isActive ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={`absolute -bottom-1.5 left-1/2 h-[2px] w-6 -translate-x-1/2 transition-opacity duration-300`}
+                    style={{
+                      background: 'var(--c-gold)',
+                      opacity: isActive ? 1 : 0,
+                    }}
                   />
                 </>
               )}
@@ -65,10 +58,10 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <a
             href={LINKS.REGISTER}
-            className="btn-primary text-[11px]"
+            className="btn-magenta text-[11px]"
             target="_blank"
             rel="noreferrer"
           >
@@ -79,32 +72,32 @@ export default function Navbar() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-gold/60 text-white"
+          className="xl:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-[var(--c-gold)] text-ink"
         >
           <span className="sr-only">Menu</span>
           <div className="relative h-3 w-5">
-            <span className={`absolute left-0 top-0 h-px w-full bg-white transition-all ${open ? 'translate-y-1.5 rotate-45' : ''}`} />
-            <span className={`absolute left-0 top-1.5 h-px w-full bg-white transition-all ${open ? 'opacity-0' : ''}`} />
-            <span className={`absolute left-0 top-3 h-px w-full bg-white transition-all ${open ? '-translate-y-1.5 -rotate-45' : ''}`} />
+            <span className={`absolute left-0 top-0 h-[2px] w-full bg-ink transition-all ${open ? 'translate-y-1.5 rotate-45' : ''}`} />
+            <span className={`absolute left-0 top-1.5 h-[2px] w-full bg-ink transition-all ${open ? 'opacity-0' : ''}`} />
+            <span className={`absolute left-0 top-3 h-[2px] w-full bg-ink transition-all ${open ? '-translate-y-1.5 -rotate-45' : ''}`} />
           </div>
         </button>
       </div>
 
       {/* Mobile drawer */}
       <div
-        className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-500 ${
-          open ? 'max-h-[640px] opacity-100' : 'max-h-0 opacity-0'
-        } bg-ink/95 backdrop-blur-xl border-t border-gold/20`}
+        className={`xl:hidden overflow-hidden transition-[max-height,opacity] duration-500 ${
+          open ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+        } bg-white border-t border-[var(--c-gold)]/40`}
       >
         <nav className="container-x flex flex-col py-6 gap-1">
-          {NAV.map((item) => (
+          {NAV_PRIMARY.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `block py-3 text-base font-semibold uppercase tracking-[0.18em] border-b border-white/5 ${
-                  isActive ? 'text-white' : 'text-white/70'
+                `block py-3 text-base font-bold uppercase tracking-[0.18em] border-b border-ink/5 ${
+                  isActive ? 'text-magenta' : 'text-ink/80'
                 }`
               }
             >
@@ -113,7 +106,7 @@ export default function Navbar() {
           ))}
           <a
             href={LINKS.REGISTER}
-            className="btn-primary mt-5 self-start"
+            className="btn-magenta mt-5 self-start"
             target="_blank"
             rel="noreferrer"
           >

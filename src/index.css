@@ -3,16 +3,25 @@
 @tailwind utilities;
 
 /* ------------------------------------------------------------------
- * Display font note:
- * The "Wonderful Branding" free .otf embeds a "Personal Use Only /
- * Din Studio" watermark in every glyph, which renders visibly on any
- * public-facing site. It has been disabled until a commercial license
- * is obtained. Display type falls back to Italiana + Playfair Display
- * (both free / open-license Google Fonts).
+ * Mamas & Mentors International — visual direction:
+ * Modern Glam / Talk-Show Set. Bright WHITE backgrounds with
+ * saturated MAGENTA + TEAL color blocks, real GOLD trim lines on
+ * borders/dividers, bold display sans (Bebas Neue) paired with
+ * Playfair Display for editorial moments. Logo files live in
+ * /public/brand/. No watermarked fonts in use.
  * ------------------------------------------------------------------ */
 
 :root {
   color-scheme: light;
+  --c-magenta: #db3d9e;
+  --c-teal: #079fa6;
+  --c-coral: #ff2768;
+  --c-blush: #ffc4d4;
+  --c-cyan: #05e0e9;
+  --c-gold: #D4AF37;
+  --c-gold-light: #f3d97a;
+  --c-gold-dark: #a07f17;
+  --c-ink: #14101b;
 }
 
 html {
@@ -24,15 +33,20 @@ body {
   font-feature-settings: 'liga' 1, 'kern' 1;
 }
 
-/* ---------- Reusable Glam Utilities ---------- */
+/* ---------- Components ---------- */
 @layer components {
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
   }
 
   .display-font {
-    font-family: 'Italiana', 'Playfair Display', Georgia, serif;
+    font-family: 'Bebas Neue', 'Anton', 'Playfair Display', sans-serif;
     letter-spacing: 0.01em;
+  }
+
+  .editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
   }
 
   .script-font {
@@ -41,177 +55,241 @@ body {
     font-weight: 500;
   }
 
-  /* Solid metallic gold — no shimmer, no pale highlight bleed. */
-  .gold-text {
-    background: linear-gradient(
-      180deg,
-      #c9a24a 0%,
-      #b8913d 50%,
-      #8f6b1c 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .gold-rule {
-    height: 1px;
+  /* GOLD treatments — solid metallic, no shimmer that leans yellow. */
+  .gold-line {
+    height: 2px;
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(184, 145, 61, 0.9) 20%,
-      #b8913d 50%,
-      rgba(184, 145, 61, 0.9) 80%,
+      var(--c-gold) 15%,
+      var(--c-gold-light) 50%,
+      var(--c-gold) 85%,
       transparent 100%
     );
   }
 
-  .gold-border {
-    border: 1px solid rgba(184, 145, 61, 0.6);
+  .gold-rule {
+    height: 1px;
+    background: var(--c-gold);
+    opacity: 0.85;
   }
 
+  .gold-frame {
+    border: 2px solid var(--c-gold);
+    box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.3);
+  }
+
+  /* Buttons — chunky, talk-show, photogenic. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold uppercase tracking-[0.18em] transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all duration-300;
   }
 
-  .btn-primary {
+  .btn-magenta {
     @apply btn text-white;
     background: linear-gradient(135deg, #db3d9e 0%, #ff2768 100%);
-    box-shadow: 0 18px 40px -18px rgba(219, 61, 158, 0.7);
+    box-shadow: 0 14px 30px -12px rgba(219, 61, 158, 0.55);
   }
-  .btn-primary:hover {
+  .btn-magenta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 26px 55px -18px rgba(219, 61, 158, 0.85);
+    box-shadow: 0 22px 50px -14px rgba(219, 61, 158, 0.7);
   }
 
   .btn-teal {
     @apply btn text-white;
     background: linear-gradient(135deg, #079fa6 0%, #05e0e9 100%);
-    box-shadow: 0 18px 40px -18px rgba(7, 159, 166, 0.6);
+    box-shadow: 0 14px 30px -12px rgba(7, 159, 166, 0.5);
   }
   .btn-teal:hover {
     transform: translateY(-2px);
+    box-shadow: 0 22px 50px -14px rgba(7, 159, 166, 0.65);
   }
 
-  .btn-ghost {
-    @apply btn;
-    color: #fff;
-    background: transparent;
-    border: 1px solid rgba(184, 145, 61, 0.75);
-  }
-  .btn-ghost:hover {
-    background: rgba(184, 145, 61, 0.15);
-    border-color: #c9a24a;
-    color: #fff;
-  }
-
-  .btn-dark {
+  .btn-ink {
     @apply btn text-white;
-    background: linear-gradient(135deg, #16121d 0%, #0b0b10 100%);
-    border: 1px solid rgba(184, 145, 61, 0.55);
+    background: var(--c-ink);
+    border: 2px solid var(--c-gold);
   }
-  .btn-dark:hover {
-    border-color: #c9a24a;
+  .btn-ink:hover {
     transform: translateY(-2px);
+    background: #251b34;
   }
 
   .btn-light {
     @apply btn text-ink;
     background: #fff;
-    border: 1px solid rgba(11, 11, 16, 0.12);
+    border: 2px solid var(--c-gold);
   }
   .btn-light:hover {
-    border-color: #b8913d;
+    transform: translateY(-2px);
+    border-color: var(--c-gold-dark);
+  }
+
+  .btn-ghost-light {
+    @apply btn text-white;
+    background: transparent;
+    border: 2px solid #fff;
+  }
+  .btn-ghost-light:hover {
+    background: rgba(255, 255, 255, 0.12);
     transform: translateY(-2px);
   }
 
-  .glam-card {
-    @apply relative rounded-3xl bg-white p-8 transition-transform duration-500;
-    box-shadow:
-      0 20px 50px -28px rgba(11, 11, 16, 0.18),
-      inset 0 0 0 1px rgba(184, 145, 61, 0.25);
-  }
-  .glam-card:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      0 30px 70px -30px rgba(219, 61, 158, 0.25),
-      inset 0 0 0 1px rgba(184, 145, 61, 0.5);
-  }
-
-  .luxe-card {
-    @apply relative rounded-3xl p-8 text-white transition-transform duration-500;
-    background: linear-gradient(160deg, #1b1424 0%, #0b0b10 100%);
-    box-shadow:
-      0 30px 80px -30px rgba(0, 0, 0, 0.6),
-      inset 0 0 0 1px rgba(184, 145, 61, 0.35);
-  }
-  .luxe-card:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      0 40px 90px -30px rgba(0, 0, 0, 0.7),
-      inset 0 0 0 1px rgba(201, 162, 74, 0.6);
-  }
-
+  /* Eyebrow labels — bold uppercase tracked, like editorial captions */
   .eyebrow {
-    @apply text-[11px] font-bold uppercase tracking-[0.32em] text-magenta;
+    @apply text-[11px] font-bold uppercase tracking-[0.32em];
+  }
+  .eyebrow-magenta { @apply eyebrow text-magenta; }
+  .eyebrow-teal { @apply eyebrow text-teal; }
+  .eyebrow-gold { @apply eyebrow; color: var(--c-gold-dark); }
+  .eyebrow-blush { @apply eyebrow text-blush; }
+
+  /* Cards */
+  .card-light {
+    @apply relative rounded-3xl bg-white p-8 transition-all duration-500;
+    box-shadow: 0 18px 50px -28px rgba(20, 16, 27, 0.18);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+  .card-light:hover {
+    transform: translateY(-4px);
+    border-color: var(--c-gold);
+    box-shadow: 0 30px 70px -30px rgba(219, 61, 158, 0.28);
   }
 
-  .section {
-    @apply py-20 sm:py-28;
+  .card-magenta {
+    @apply relative rounded-3xl p-8 text-white transition-all duration-500;
+    background: linear-gradient(160deg, #db3d9e 0%, #b3318a 100%);
+    box-shadow: 0 25px 60px -28px rgba(219, 61, 158, 0.5);
+  }
+  .card-magenta:hover { transform: translateY(-4px); }
+
+  .card-teal {
+    @apply relative rounded-3xl p-8 text-white transition-all duration-500;
+    background: linear-gradient(160deg, #079fa6 0%, #056269 100%);
+    box-shadow: 0 25px 60px -28px rgba(7, 159, 166, 0.5);
+  }
+  .card-teal:hover { transform: translateY(-4px); }
+
+  .card-ink {
+    @apply relative rounded-3xl p-8 text-white transition-all duration-500;
+    background: linear-gradient(160deg, #1b1424 0%, #0b0b10 100%);
+    box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+  }
+  .card-ink:hover {
+    transform: translateY(-4px);
+    border-color: var(--c-gold);
   }
 
-  /* Display headline sizing — editorial, not billboard. */
+  /* SECTIONS — bold color blocks */
+  .section { @apply py-20 sm:py-28; }
+
+  .bg-blush-soft {
+    background: linear-gradient(180deg, #fff 0%, #ffeaf1 100%);
+  }
+
+  .bg-stage-pink {
+    background: linear-gradient(135deg, #db3d9e 0%, #ff2768 100%);
+  }
+  .bg-stage-teal {
+    background: linear-gradient(135deg, #079fa6 0%, #05e0e9 100%);
+  }
+
+  /* Gold-framed quote card — signature graphic motif */
+  .quote-card {
+    @apply relative rounded-2xl bg-white p-8 text-ink;
+    border: 2px solid var(--c-gold);
+    box-shadow: 0 20px 50px -30px rgba(212, 175, 55, 0.6);
+  }
+  .quote-card::before,
+  .quote-card::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--c-gold);
+  }
+  .quote-card::before {
+    top: -6px; left: -6px;
+    border-right: none; border-bottom: none;
+  }
+  .quote-card::after {
+    bottom: -6px; right: -6px;
+    border-left: none; border-top: none;
+  }
+
+  /* Headline scales — bold, photogenic, NOT thin editorial */
+  .h-hero {
+    @apply display-font uppercase;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+  }
+
   .h-display {
-    @apply display-font text-4xl sm:text-5xl lg:text-6xl leading-[1.05];
+    @apply display-font uppercase;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
   }
 
   .h-serif {
-    @apply font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] font-semibold;
+    @apply editorial;
+    font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+    line-height: 1.1;
   }
 
-  .h-hero {
-    @apply display-font text-5xl sm:text-6xl lg:text-[5.5rem] leading-[1.02];
+  .h-section {
+    @apply editorial;
+    font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  /* Photo treatments */
+  .photo-frame {
+    @apply relative overflow-hidden rounded-3xl;
+    border: 2px solid var(--c-gold);
+    box-shadow: 0 30px 70px -30px rgba(20, 16, 27, 0.4);
+  }
+
+  .stock-tag {
+    @apply absolute bottom-3 right-3 rounded-full bg-white/90 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.22em] text-ink/70;
   }
 }
 
-/* ---------- Hero Backgrounds ---------- */
-.hero-ink {
+/* ---------- Hero set backgrounds ---------- */
+.set-magenta-teal {
   background:
-    radial-gradient(circle at 18% 22%, rgba(219, 61, 158, 0.35), transparent 55%),
-    radial-gradient(circle at 82% 30%, rgba(7, 159, 166, 0.28), transparent 55%),
-    radial-gradient(circle at 50% 90%, rgba(184, 145, 61, 0.12), transparent 60%),
-    linear-gradient(135deg, #0b0b10 0%, #1a0f1c 55%, #0b0b10 100%);
+    linear-gradient(90deg,
+      #db3d9e 0%, #db3d9e 22%,
+      #fff 22%, #fff 78%,
+      #079fa6 78%, #079fa6 100%);
 }
 
-.hero-blush {
-  background:
-    radial-gradient(circle at 80% 10%, rgba(219, 61, 158, 0.18), transparent 55%),
-    radial-gradient(circle at 10% 90%, rgba(7, 159, 166, 0.15), transparent 55%),
-    linear-gradient(180deg, #fff 0%, #ffe6ee 60%, #ffc4d4 100%);
+.set-magenta-teal-mobile {
+  background: linear-gradient(180deg, #fff 0%, #fff 60%, #ffeaf1 100%);
 }
 
-.hero-teal {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(5, 224, 233, 0.25), transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(219, 61, 158, 0.25), transparent 55%),
-    linear-gradient(135deg, #052e33 0%, #083f45 55%, #052e33 100%);
+@media (min-width: 1024px) {
+  .set-magenta-teal-responsive { background: var(--bg-set-desktop, none); }
 }
 
-.grain::after {
-  content: '';
+/* Vertical gold trim lines — like the studio set */
+.gold-vert-line {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.05) 1px,
-    transparent 1px
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--c-gold) 15%,
+    var(--c-gold-light) 50%,
+    var(--c-gold) 85%,
+    transparent 100%
   );
-  background-size: 3px 3px;
-  opacity: 0.3;
-  mix-blend-mode: overlay;
 }
 
-/* ---------- Fade-in on scroll ---------- */
+/* Fade-in on scroll */
 .fade-in-init {
   opacity: 0;
   transform: translateY(28px);
@@ -223,8 +301,13 @@ body {
   transform: translateY(0);
 }
 
-/* ---------- Selection ---------- */
 ::selection {
   background: rgba(219, 61, 158, 0.85);
   color: #fff;
+}
+
+/* Honor reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-init { opacity: 1 !important; transform: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }

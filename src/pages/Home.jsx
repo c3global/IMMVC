@@ -1,162 +1,166 @@
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import FadeIn from '../components/FadeIn';
-import GoldDivider from '../components/GoldDivider';
-import ImageSlot from '../components/ImageSlot';
+import Photo from '../components/Photo';
+import QuoteCard from '../components/QuoteCard';
 import {
   LINKS,
-  TAGLINE,
-  MISSION,
-  TOPICS,
+  HERO_HEADLINE_LINES,
+  HERO_SUB,
+  ABOUT_INTRO,
+  ABOUT_BODY,
+  ABOUT_TAGLINE,
   WHO_ITS_FOR,
   TESTIMONIALS,
+  TOPIC_PAGES,
+  STOCK_PHOTOS,
+  TAGLINE,
 } from '../data/content';
 
+const TOPIC_LIST = [
+  { slug: 'motherhood', accent: 'magenta' },
+  { slug: 'mentorship', accent: 'teal' },
+  { slug: 'healing', accent: 'magenta' },
+  { slug: 'grief', accent: 'teal' },
+];
+
 export default function Home() {
-  const heroBgRef = useRef(null);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (!heroBgRef.current) return;
-      const y = window.scrollY;
-      heroBgRef.current.style.transform = `translate3d(0, ${y * 0.15}px, 0)`;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
     <>
-      {/* HERO */}
-      <section className="relative isolate overflow-hidden min-h-[92svh] flex items-center grain">
-        <div ref={heroBgRef} className="absolute inset-0 -z-10 hero-ink will-change-transform" />
+      {/* HERO — color-blocked talk-show set */}
+      <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28 bg-white">
+        {/* Background color blocks (responsive) */}
+        <div className="absolute inset-y-0 left-0 w-[18%] bg-stage-pink hidden lg:block" aria-hidden="true" />
+        <div className="absolute inset-y-0 right-0 w-[18%] bg-stage-teal hidden lg:block" aria-hidden="true" />
+        <span className="gold-vert-line hidden lg:block" style={{ left: '18%' }} />
+        <span className="gold-vert-line hidden lg:block" style={{ right: '18%' }} />
 
-        <div className="container-x relative grid lg:grid-cols-12 gap-12 items-center pt-32 pb-20 text-white">
-          <div className="lg:col-span-7">
-            <FadeIn>
-              <p className="eyebrow text-blush mb-6">{TAGLINE}</p>
-            </FadeIn>
-            <FadeIn delay={120}>
-              <h1 className="h-hero">
-                Motherhood <span className="text-blush italic font-serif font-normal">&amp;</span> Otherhood,
-                <span className="block gold-text">Celebrated.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={240}>
-              <div className="gold-rule w-40 mt-8" />
-            </FadeIn>
-            <FadeIn delay={320}>
-              <p className="mt-8 max-w-xl font-serif italic text-lg text-white/85 leading-relaxed">
-                {MISSION}
-              </p>
-            </FadeIn>
-            <FadeIn delay={440}>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-primary">
-                  Register Free
-                </a>
-                <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost">
-                  Go VIP — $147
-                </a>
-              </div>
-            </FadeIn>
-          </div>
+        {/* Mobile color stripe */}
+        <div className="absolute top-0 inset-x-0 h-2 lg:hidden" style={{ background: 'linear-gradient(90deg, #db3d9e 0%, #079fa6 100%)' }} aria-hidden="true" />
+
+        <div className="container-x relative grid lg:grid-cols-12 gap-12 items-center">
+          <FadeIn className="lg:col-span-7 text-center lg:text-left">
+            <p className="eyebrow-magenta mb-6">{TAGLINE}</p>
+            <h1 className="h-hero text-ink">
+              {HERO_HEADLINE_LINES.map((line, i) => (
+                <span key={i} className="block">
+                  {line.replace('Stories.', '')}
+                  {line.includes('Stories.') && (
+                    <span className="editorial italic font-normal normal-case tracking-normal text-magenta">Stories.</span>
+                  )}
+                </span>
+              ))}
+            </h1>
+            <div className="gold-line w-40 mt-8 mx-auto lg:mx-0" />
+            <p className="mt-8 max-w-xl editorial italic text-lg sm:text-xl text-ink/75 leading-relaxed mx-auto lg:mx-0">
+              {HERO_SUB}
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-magenta">
+                Register Free
+              </a>
+              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ink">
+                Go VIP — $147
+              </a>
+            </div>
+          </FadeIn>
 
           <FadeIn delay={200} className="lg:col-span-5">
-            <ImageSlot
-              tone="dark"
-              ratio="4/5"
-              label="Hero visual"
-              description="Brand photography of Dr. CK / community, 4:5 portrait"
-            />
+            <Photo src={STOCK_PHOTOS.heroLounge} ratio="4/5" alt="Diverse women in community — stock placeholder" />
           </FadeIn>
         </div>
       </section>
 
-      {/* WHAT IS MAMAS & MENTORS */}
-      <section className="section bg-white relative overflow-hidden">
+      {/* ABOUT INTRO — bright, with brand tagline highlight */}
+      <section className="section bg-blush-soft">
         <div className="container-x grid lg:grid-cols-12 gap-12 items-start">
           <FadeIn className="lg:col-span-5">
-            <p className="eyebrow">Who We Are</p>
-            <h2 className="h-serif mt-4">
-              Mamas and Mentors International is a faith-led nonprofit —
-              <span className="gold-text"> and a movement.</span>
+            <p className="eyebrow-magenta">Welcome</p>
+            <h2 className="h-serif mt-4 text-ink">
+              A community that goes
+              <span className="block editorial italic" style={{ color: 'var(--c-gold-dark)' }}>
+                beyond the highlight reel.
+              </span>
             </h2>
           </FadeIn>
           <FadeIn delay={120} className="lg:col-span-7 space-y-5 text-lg leading-relaxed text-ink/80">
-            <p>
-              We celebrate motherhood and otherhood at every stage of life — the
-              good, the bad, the ups, the downs, the messy, the pretty — and
-              everything in between.
-            </p>
-            <p>
-              This is a global community for the mama, the mentor, and every
-              woman navigating a season she didn’t choose. Warm, celebratory,
-              and real — because we don’t shy away from the hard chapters.
+            <p>{ABOUT_INTRO}</p>
+            <p>{ABOUT_BODY}</p>
+            <p className="editorial italic text-2xl text-magenta">
+              {ABOUT_TAGLINE}
             </p>
             <div className="pt-4">
-              <Link to="/about" className="btn-dark">Our Story →</Link>
+              <Link to="/about" className="btn-light">Our Full Story →</Link>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* EVERY CHAPTER BELONGS HERE */}
-      <section className="section relative overflow-hidden bg-blush-fade">
-        <div className="container-x relative">
+      {/* WHERE DO YOU BELONG — topic doors */}
+      <section className="section bg-white">
+        <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
-            <p className="eyebrow">Every Chapter Belongs Here</p>
-            <h2 className="h-serif mt-4">
-              The good, the bad, the messy,
-              <span className="gold-text"> the pretty.</span>
+            <p className="eyebrow-teal">Find Your Door</p>
+            <h2 className="h-display mt-4 text-ink">
+              Every chapter
+              <span className="block" style={{ color: 'var(--c-gold-dark)' }}>
+                belongs here.
+              </span>
             </h2>
-            <GoldDivider className="mt-8" />
-            <p className="mt-6 font-serif italic text-ink/70 text-lg">
-              A visual representation of the topics this community covers.
+            <div className="gold-line mx-auto w-40 mt-8" />
+            <p className="mt-6 editorial italic text-ink/65 text-lg max-w-2xl mx-auto">
+              Pick the season you’re in. We’ll meet you there.
             </p>
           </FadeIn>
 
-          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {TOPICS.map((t, i) => (
-              <FadeIn key={t.title} delay={i * 50}>
-                <div className="glam-card h-full">
-                  <div className="flex items-start gap-4">
-                    <span className="text-3xl">{t.emoji}</span>
-                    <div>
-                      <h3 className="font-serif text-xl text-ink/90">{t.title}</h3>
-                      <div className="gold-rule mt-3 w-12" />
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+          <div className="mt-16 grid gap-6 sm:grid-cols-2">
+            {TOPIC_LIST.map(({ slug, accent }, i) => {
+              const t = TOPIC_PAGES[slug];
+              return (
+                <FadeIn key={slug} delay={i * 80}>
+                  <Link
+                    to={`/${t.slug}`}
+                    className={`block ${accent === 'magenta' ? 'card-magenta' : 'card-teal'} group h-full`}
+                  >
+                    <p className="eyebrow text-white/85">{t.eyebrow}</p>
+                    <h3 className="display-font text-4xl mt-4 leading-[0.95]">
+                      {t.title} {t.accent && <span className="editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>{t.accent}</span>}
+                    </h3>
+                    <div className="mt-4 w-12 h-px" style={{ background: 'rgba(255,255,255,0.6)' }} />
+                    <p className="mt-5 text-white/90 leading-relaxed">{t.intro}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] font-bold border-b border-white/40 group-hover:border-white pb-1 transition">
+                      Step Inside →
+                    </span>
+                  </Link>
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* WHO IS THIS FOR */}
-      <section className="section bg-white">
+      <section className="section bg-blush-soft">
         <div className="container-x grid lg:grid-cols-12 gap-12 items-start">
           <FadeIn className="lg:col-span-5 lg:sticky lg:top-32">
-            <p className="eyebrow">Who Is This For?</p>
-            <h2 className="h-serif mt-4">
+            <p className="eyebrow-magenta">Who Is This For?</p>
+            <h2 className="h-serif mt-4 text-ink">
               For the mama. For the mentor.
-              <span className="gold-text"> For every woman in between.</span>
+              <span className="editorial italic" style={{ color: 'var(--c-gold-dark)' }}> For every woman in between.</span>
             </h2>
-            <GoldDivider center={false} className="mt-6" />
-            <p className="mt-6 font-serif italic text-ink/70 text-lg">
+            <div className="gold-line w-32 mt-6" />
+            <p className="mt-6 editorial italic text-ink/70 text-lg">
               You do not have to be a mother or mentor to belong here.
             </p>
           </FadeIn>
 
           <div className="lg:col-span-7 space-y-4">
             {WHO_ITS_FOR.map((line, i) => (
-              <FadeIn key={i} delay={i * 70}>
-                <div className="glam-card flex gap-5 items-start">
-                  <span className="font-serif text-3xl text-magenta leading-none mt-1">
+              <FadeIn key={i} delay={i * 60}>
+                <div className="card-light flex gap-5 items-start">
+                  <span className="display-font text-5xl text-magenta leading-none mt-1">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="font-serif text-lg leading-relaxed text-ink/85">
+                  <p className="editorial text-lg leading-relaxed text-ink/85">
                     {line}
                   </p>
                 </div>
@@ -166,71 +170,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* IMMVC 2026 HIGHLIGHT */}
-      <section className="relative overflow-hidden py-24 sm:py-32 grain">
-        <div className="absolute inset-0 hero-ink" />
-        <div className="container-x relative text-white">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <FadeIn className="lg:col-span-7">
-              <p className="eyebrow text-blush">IMMVC 2026</p>
-              <h2 className="h-display mt-4">
-                The annual flagship conference of
-                <span className="gold-text"> Mamas &amp; Mentors International.</span>
-              </h2>
-              <GoldDivider center={false} className="mt-8" />
-              <p className="mt-8 text-lg text-white/85 leading-relaxed max-w-2xl">
-                <strong>May 9–10, 2026.</strong> Two days, 100% virtual,
-                international. Free general access. VIP $147.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-primary">
-                  Register Free
-                </a>
-                <Link to="/immvc" className="btn-ghost">
-                  Conference Details →
-                </Link>
-              </div>
-            </FadeIn>
+      {/* IMMVC 2026 HIGHLIGHT — magenta block */}
+      <section className="relative overflow-hidden py-24 sm:py-32 bg-stage-pink text-white">
+        <span className="gold-vert-line" style={{ left: '8%' }} />
+        <span className="gold-vert-line" style={{ right: '8%' }} />
 
-            <FadeIn delay={120} className="lg:col-span-5">
-              <div className="luxe-card text-center">
-                <p className="eyebrow text-blush">Save the Dates</p>
-                <p className="display-font text-6xl mt-4 gold-text">May 9–10</p>
-                <p className="font-serif text-2xl mt-2 text-white/90">2026</p>
-                <GoldDivider className="my-6" />
-                <ul className="space-y-3 text-sm text-white/80 text-left">
-                  <li>✦ 100% Virtual · International</li>
-                  <li>✦ Free general access</li>
-                  <li>✦ VIP Pass — $147</li>
-                  <li>✦ Live Q&amp;A + networking</li>
-                </ul>
-              </div>
-            </FadeIn>
-          </div>
+        <div className="container-x relative grid lg:grid-cols-12 gap-12 items-center">
+          <FadeIn className="lg:col-span-7">
+            <p className="eyebrow text-white/85">IMMVC 2026</p>
+            <h2 className="h-display mt-4">
+              The annual flagship event
+              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>
+                of Mamas &amp; Mentors.
+              </span>
+            </h2>
+            <div className="gold-line w-40 mt-8" />
+            <p className="mt-8 text-lg text-white/95 leading-relaxed max-w-2xl">
+              <strong>May 9–10, 2026.</strong> Two days. 100% virtual.
+              International. Free general access. VIP $147.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
+                Register Free
+              </a>
+              <Link to="/immvc" className="btn-ghost-light">
+                Conference Details →
+              </Link>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={120} className="lg:col-span-5">
+            <div className="quote-card text-center">
+              <p className="eyebrow-magenta">Save the Dates</p>
+              <p className="display-font text-7xl mt-4 text-ink">May 9–10</p>
+              <p className="editorial text-2xl mt-2 text-ink/70">2026</p>
+              <div className="gold-line my-6 mx-auto w-24" />
+              <ul className="space-y-2 text-sm text-ink/80 text-left">
+                <li>✦ 100% Virtual · International</li>
+                <li>✦ Free general access</li>
+                <li>✦ VIP Pass — $147</li>
+                <li>✦ Live Q&amp;A + networking</li>
+              </ul>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ASSESSMENT TEASER */}
+      {/* ASSESSMENT TEASER — teal block */}
       <section className="section bg-white">
         <div className="container-x">
           <FadeIn>
-            <div className="relative overflow-hidden rounded-3xl p-10 sm:p-14 text-white gold-border"
-              style={{ background: 'linear-gradient(135deg, #052e33 0%, #079fa6 100%)' }}
-            >
+            <div className="relative overflow-hidden rounded-3xl p-10 sm:p-14 text-white bg-stage-teal">
+              <span className="gold-vert-line" style={{ left: '6%' }} />
+              <span className="gold-vert-line" style={{ right: '6%' }} />
               <div className="relative grid lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-7">
-                  <p className="eyebrow text-cyan">Take the Assessment</p>
-                  <h2 className="h-serif mt-4">
+                  <p className="eyebrow text-white/90">Take the Assessment</p>
+                  <h2 className="h-display mt-4">
                     Which season of mama or mentor
-                    <span className="gold-text"> are you in?</span>
+                    <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>
+                      are you in?
+                    </span>
                   </h2>
-                  <p className="mt-6 text-white/90 leading-relaxed max-w-xl">
-                    A free reflection tool to help you name where you are and
+                  <p className="mt-6 text-white/95 leading-relaxed max-w-xl">
+                    A free reflection tool to help you name where you are — and
                     what you need next.
                   </p>
                 </div>
                 <div className="lg:col-span-5 lg:text-right">
-                  <a href={LINKS.ASSESSMENT} target="_blank" rel="noreferrer" className="btn-primary">
+                  <a href={LINKS.ASSESSMENT} target="_blank" rel="noreferrer" className="btn-light">
                     Start the Assessment →
                   </a>
                 </div>
@@ -240,32 +248,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="section bg-blush-fade">
+      {/* TESTIMONIALS — gold-framed quote cards */}
+      <section className="section bg-blush-soft">
         <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
-            <p className="eyebrow">Testimonials</p>
-            <h2 className="h-serif mt-4">
+            <p className="eyebrow-magenta">Testimonials</p>
+            <h2 className="h-serif mt-4 text-ink">
               What our community
-              <span className="gold-text"> is saying.</span>
+              <span className="editorial italic" style={{ color: 'var(--c-gold-dark)' }}> is saying.</span>
             </h2>
-            <GoldDivider className="mt-8" />
+            <div className="gold-line mx-auto w-40 mt-8" />
           </FadeIn>
 
           <div className="mt-16 grid gap-8 lg:grid-cols-2">
             {TESTIMONIALS.map((t, i) => (
               <FadeIn key={t.name} delay={i * 100}>
-                <figure className="glam-card h-full">
-                  <span className="font-serif text-6xl text-magenta leading-none">“</span>
-                  <blockquote className="-mt-4 font-serif text-xl sm:text-2xl text-ink/85 leading-snug italic">
-                    {t.quote}
-                  </blockquote>
-                  <div className="gold-rule my-6 w-16" />
-                  <figcaption className="text-sm uppercase tracking-[0.22em]">
-                    <span className="text-magenta font-bold">{t.name}</span>
-                    <span className="text-ink/50"> · {t.role}</span>
-                  </figcaption>
-                </figure>
+                <QuoteCard
+                  quote={t.quote}
+                  attribution={`${t.name} · ${t.role}`}
+                  accent={i === 0 ? 'magenta' : 'teal'}
+                  className="h-full"
+                />
               </FadeIn>
             ))}
           </div>
@@ -273,21 +276,24 @@ export default function Home() {
       </section>
 
       {/* FOOTER CTA */}
-      <section className="relative overflow-hidden py-24 sm:py-28 grain">
-        <div className="absolute inset-0 hero-ink" />
-        <div className="container-x relative text-center text-white">
+      <section className="relative overflow-hidden py-24 sm:py-28 bg-ink text-white">
+        <span className="gold-vert-line" style={{ left: '10%' }} />
+        <span className="gold-vert-line" style={{ right: '10%' }} />
+        <div className="container-x relative text-center">
           <FadeIn>
             <p className="eyebrow text-blush">Your Seat Is Waiting</p>
             <h2 className="h-display mt-4">
-              Register Now.
-              <span className="block gold-text">Celebrate every chapter.</span>
+              Push, pour,
+              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>
+                &amp; prosper together.
+              </span>
             </h2>
-            <GoldDivider className="mt-10" />
+            <div className="gold-line mx-auto w-40 mt-8" />
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-primary">
+              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-magenta">
                 Register Free
               </a>
-              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost">
+              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">
                 Go VIP — $147
               </a>
             </div>

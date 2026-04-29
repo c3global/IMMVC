@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import PageHero from '../components/PageHero';
 import FadeIn from '../components/FadeIn';
-import GoldDivider from '../components/GoldDivider';
 import { LINKS, FAQS, VIP_PERKS } from '../data/content';
 
 function FAQItem({ q, a, isOpen, onClick }) {
   return (
-    <div className="border-b border-[#b8913d]/30">
+    <div className="border-b" style={{ borderColor: 'rgba(212,175,55,0.4)' }}>
       <button onClick={onClick} className="w-full flex items-start justify-between gap-6 py-6 text-left">
-        <span className="font-serif text-xl sm:text-2xl text-ink/90">{q}</span>
-        <span className={`mt-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#b8913d]/60 text-magenta transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
+        <span className="editorial text-xl sm:text-2xl text-ink/90">{q}</span>
+        <span
+          className={`mt-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-magenta transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
+          style={{ border: '2px solid var(--c-gold)' }}
+        >
           +
         </span>
       </button>
@@ -28,15 +30,16 @@ export default function IMMVC() {
   return (
     <>
       <PageHero
+        tone="magenta"
         eyebrow="The International Mamas & Mentors Virtual Conference"
         title="IMMVC"
         accent="2026"
         intro="The annual flagship event of Mamas and Mentors International. May 9–10, 2026 — virtual, international, and free to attend."
       >
-        <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-primary">
+        <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
           Register Free
         </a>
-        <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost">
+        <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">
           Go VIP — $147
         </a>
       </PageHero>
@@ -45,10 +48,10 @@ export default function IMMVC() {
       <section className="section bg-white">
         <div className="container-x grid lg:grid-cols-12 gap-12 items-start">
           <FadeIn className="lg:col-span-5">
-            <p className="eyebrow">What Is IMMVC?</p>
-            <h2 className="h-serif mt-4">
+            <p className="eyebrow-magenta">What Is IMMVC?</p>
+            <h2 className="h-serif mt-4 text-ink">
               The annual flagship event of
-              <span className="gold-text"> Mamas &amp; Mentors International.</span>
+              <span className="editorial italic" style={{ color: 'var(--c-gold-dark)' }}> Mamas &amp; Mentors International.</span>
             </h2>
           </FadeIn>
           <FadeIn delay={120} className="lg:col-span-7 space-y-5 text-lg leading-relaxed text-ink/80">
@@ -69,15 +72,17 @@ export default function IMMVC() {
       </section>
 
       {/* IMMVC 2026 DETAILS */}
-      <section className="section bg-blush-fade">
+      <section className="section bg-blush-soft">
         <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
-            <p className="eyebrow">IMMVC 2026</p>
-            <h2 className="h-serif mt-4">
+            <p className="eyebrow-teal">IMMVC 2026</p>
+            <h2 className="h-display mt-4 text-ink">
               Save the dates.
-              <span className="gold-text"> Save your seat.</span>
+              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: 'var(--c-gold-dark)' }}>
+                Save your seat.
+              </span>
             </h2>
-            <GoldDivider className="mt-8" />
+            <div className="gold-line mx-auto w-40 mt-8" />
           </FadeIn>
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -88,10 +93,10 @@ export default function IMMVC() {
               { label: 'Lounge', value: 'During + 3 days after' },
             ].map((item, i) => (
               <FadeIn key={item.label} delay={i * 60}>
-                <div className="glam-card text-center h-full">
-                  <p className="eyebrow">{item.label}</p>
-                  <p className="font-serif text-xl mt-3 text-ink/90">{item.value}</p>
-                  <div className="gold-rule mx-auto mt-4 w-10" />
+                <div className="card-light text-center h-full">
+                  <p className="eyebrow-magenta">{item.label}</p>
+                  <p className="editorial text-xl mt-3 text-ink/90">{item.value}</p>
+                  <div className="gold-line mx-auto mt-4 w-10" />
                 </div>
               </FadeIn>
             ))}
@@ -103,29 +108,31 @@ export default function IMMVC() {
       <section className="section bg-white">
         <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
-            <p className="eyebrow">Ticket Options</p>
-            <h2 className="h-serif mt-4">
+            <p className="eyebrow-magenta">Ticket Options</p>
+            <h2 className="h-display mt-4 text-ink">
               Free for all.
-              <span className="gold-text"> Glorious for VIPs.</span>
+              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: 'var(--c-gold-dark)' }}>
+                Glorious for VIPs.
+              </span>
             </h2>
-            <GoldDivider className="mt-8" />
+            <div className="gold-line mx-auto w-40 mt-8" />
           </FadeIn>
 
           <div className="mt-16 grid gap-8 lg:grid-cols-2 lg:items-stretch">
             {/* GENERAL */}
             <FadeIn>
-              <div className="glam-card h-full flex flex-col">
-                <p className="eyebrow">General Access</p>
-                <p className="display-font text-6xl mt-4 text-ink/90">FREE</p>
-                <GoldDivider center={false} className="mt-6" />
+              <div className="card-light h-full flex flex-col">
+                <p className="eyebrow-magenta">General Access</p>
+                <p className="display-font text-7xl mt-4 text-ink/90">FREE</p>
+                <div className="gold-line mt-6 w-24" />
                 <ul className="mt-8 space-y-4 text-ink/80">
-                  <li className="flex gap-3"><span className="text-magenta mt-1">→</span> Live access to all main sessions</li>
-                  <li className="flex gap-3"><span className="text-magenta mt-1">→</span> Interactive Q&amp;A participation</li>
-                  <li className="flex gap-3"><span className="text-magenta mt-1">→</span> Basic networking &amp; general chat access</li>
-                  <li className="flex gap-3"><span className="text-magenta mt-1">→</span> Digital conference workbook</li>
+                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Live access to all main sessions</li>
+                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Interactive Q&amp;A participation</li>
+                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Basic networking &amp; general chat access</li>
+                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Digital conference workbook</li>
                 </ul>
                 <div className="mt-auto pt-10">
-                  <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-dark w-full">
+                  <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-ink w-full">
                     Register Free
                   </a>
                 </div>
@@ -134,21 +141,20 @@ export default function IMMVC() {
 
             {/* VIP */}
             <FadeIn delay={120}>
-              <div className="relative h-full flex flex-col rounded-3xl p-10 text-white overflow-hidden"
-                style={{
-                  background: 'linear-gradient(160deg, #db3d9e 0%, #ff2768 60%, #16121d 100%)',
-                  boxShadow: '0 40px 90px -30px rgba(219,61,158,0.5), inset 0 0 0 1px rgba(184,145,61,0.55)',
-                }}
+              <div className="relative h-full flex flex-col rounded-3xl p-10 text-white overflow-hidden bg-stage-pink"
+                style={{ boxShadow: '0 30px 70px -25px rgba(219,61,158,0.55), inset 0 0 0 2px var(--c-gold)' }}
               >
-                <span className="absolute right-6 top-6 rounded-full border border-[#c9a24a]/70 bg-ink/40 px-4 py-1 text-[10px] uppercase tracking-[0.32em] text-[#c9a24a]">
+                <span className="absolute right-6 top-6 rounded-full px-4 py-1 text-[10px] uppercase tracking-[0.32em]"
+                  style={{ border: '2px solid var(--c-gold)', color: '#ffe6a8' }}
+                >
                   Best Value
                 </span>
-                <p className="eyebrow text-blush">VIP Pass</p>
-                <p className="display-font text-6xl mt-4 gold-text">$147</p>
-                <p className="font-serif italic mt-2 text-white/90">
+                <p className="eyebrow text-white/85">VIP Pass</p>
+                <p className="display-font text-7xl mt-4" style={{ color: '#ffe6a8' }}>$147</p>
+                <p className="editorial italic mt-2 text-white/95">
                   The most value ever given at IMMVC.
                 </p>
-                <GoldDivider center={false} className="mt-6" />
+                <div className="gold-line mt-6 w-24" />
 
                 <ul className="mt-8 space-y-5 text-white/95">
                   {VIP_PERKS.map((perk) => (
@@ -156,18 +162,18 @@ export default function IMMVC() {
                       <span className="mt-1 text-lg">{perk.color === 'magenta' ? '🩷' : '🩵'}</span>
                       <div>
                         <p className="font-bold">{perk.title}</p>
-                        <p className="text-white/85 text-sm leading-relaxed">{perk.body}</p>
+                        <p className="text-white/90 text-sm leading-relaxed">{perk.body}</p>
                       </div>
                     </li>
                   ))}
                 </ul>
 
-                <p className="mt-10 font-serif italic text-center text-lg text-white">
-                  All of this for just <span className="gold-text font-bold">$147!</span>
+                <p className="mt-10 editorial italic text-center text-lg" style={{ color: '#ffe6a8' }}>
+                  All of this for just <strong>$147!</strong>
                 </p>
 
                 <div className="mt-6">
-                  <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-dark w-full">
+                  <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ink w-full">
                     Become a VIP →
                   </a>
                 </div>
@@ -178,17 +184,17 @@ export default function IMMVC() {
       </section>
 
       {/* FAQ */}
-      <section className="section bg-blush-fade">
+      <section className="section bg-blush-soft">
         <div className="container-x grid lg:grid-cols-12 gap-12 items-start">
           <FadeIn className="lg:col-span-4 lg:sticky lg:top-32">
-            <p className="eyebrow">FAQs</p>
-            <h2 className="h-serif mt-4">
+            <p className="eyebrow-magenta">FAQs</p>
+            <h2 className="h-serif mt-4 text-ink">
               The honest
-              <span className="gold-text"> answers.</span>
+              <span className="editorial italic" style={{ color: 'var(--c-gold-dark)' }}> answers.</span>
             </h2>
-            <GoldDivider center={false} className="mt-6" />
+            <div className="gold-line mt-6 w-32" />
             <div className="mt-6">
-              <a href={LINKS.EMAIL} className="btn-dark">Ask a Question →</a>
+              <a href={LINKS.EMAIL} className="btn-ink">Ask a Question →</a>
             </div>
           </FadeIn>
 
@@ -209,20 +215,23 @@ export default function IMMVC() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden py-24 sm:py-28 grain">
-        <div className="absolute inset-0 hero-ink" />
-        <div className="container-x relative text-center text-white">
+      <section className="relative overflow-hidden py-24 sm:py-28 bg-ink text-white">
+        <span className="gold-vert-line" style={{ left: '10%' }} />
+        <span className="gold-vert-line" style={{ right: '10%' }} />
+        <div className="container-x relative text-center">
           <FadeIn>
             <h2 className="h-display">
               Two days. One movement.
-              <span className="block gold-text">Your seat is waiting.</span>
+              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>
+                Your seat is waiting.
+              </span>
             </h2>
-            <GoldDivider className="mt-10" />
+            <div className="gold-line mx-auto w-40 mt-10" />
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-primary">
+              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-magenta">
                 Register Free
               </a>
-              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost">
+              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">
                 Go VIP — $147
               </a>
             </div>
