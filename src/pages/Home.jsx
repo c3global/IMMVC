@@ -14,6 +14,8 @@ import {
   TOPIC_PAGES,
   STOCK_PHOTOS,
   TAGLINE,
+  WELCOME_GORGEOUS,
+  MISSION_DR_CK,
 } from '../data/content';
 
 const TOPIC_LIST = [
@@ -275,22 +277,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER CTA */}
-      <section className="relative overflow-hidden py-24 sm:py-28 bg-ink text-white">
+      {/* DR. CK MISSION (her words) */}
+      <section className="section bg-white">
+        <div className="container-x text-center max-w-4xl mx-auto">
+          <FadeIn>
+            <p className="eyebrow-magenta">From Dr. CK</p>
+            <p className="mt-6 editorial italic text-2xl sm:text-3xl text-ink/85 leading-snug">
+              {MISSION_DR_CK}
+            </p>
+            <div className="gold-line mx-auto w-40 mt-10" />
+            <div className="mt-8">
+              <Link to="/about" className="btn-ink">Read Dr. CK’s Story →</Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* WELCOME GORGEOUS — signature closing */}
+      <section className="relative overflow-hidden py-24 sm:py-32 bg-stage-pink text-white">
         <span className="gold-vert-line" style={{ left: '10%' }} />
         <span className="gold-vert-line" style={{ right: '10%' }} />
         <div className="container-x relative text-center">
           <FadeIn>
-            <p className="eyebrow text-blush">Your Seat Is Waiting</p>
-            <h2 className="h-display mt-4">
-              Push, pour,
-              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>
-                &amp; prosper together.
-              </span>
+            <p className="eyebrow text-white/85">From Dr. CK</p>
+            <h2
+              className="display-font uppercase mt-4"
+              style={{ fontSize: 'clamp(2.5rem, 7vw, 5.5rem)', lineHeight: 1, letterSpacing: '0.02em', color: '#ffe6a8' }}
+            >
+              {WELCOME_GORGEOUS}
             </h2>
-            <div className="gold-line mx-auto w-40 mt-8" />
+            <div className="gold-line mx-auto w-40 mt-10" />
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-magenta">
+              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
                 Register Free
               </a>
               <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">

@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import FadeIn from '../components/FadeIn';
-import { LINKS, FAQS, VIP_PERKS } from '../data/content';
+import QuoteCard from '../components/QuoteCard';
+import { LINKS, FAQS, VIP_PERKS, CONFERENCE_HISTORY, MISSION_DR_CK } from '../data/content';
 
 function FAQItem({ q, a, isOpen, onClick }) {
   return (
@@ -34,7 +36,7 @@ export default function IMMVC() {
         eyebrow="The International Mamas & Mentors Virtual Conference"
         title="IMMVC"
         accent="2026"
-        intro="The annual flagship event of Mamas and Mentors International. May 9–10, 2026 — virtual, international, and free to attend."
+        intro="May 9–10, 2026 — virtual, international, and free to attend. The third year of stories that crush hearts and heal them in the same breath."
       >
         <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
           Register Free
@@ -43,6 +45,20 @@ export default function IMMVC() {
           Go VIP — $147
         </a>
       </PageHero>
+
+      {/* MOTHER'S DAY INSIGHT — the why */}
+      <section className="bg-white -mt-14 relative z-10">
+        <div className="container-x">
+          <FadeIn>
+            <QuoteCard
+              quote="Mother’s Day can be a trigger. For the woman who can’t become a mother. For the woman who just lost one. For the woman who lost a child. For the single mom who feels burnt out. We exist to show another woman she is not alone."
+              attribution="— The reason IMMVC exists"
+              accent="magenta"
+              className="mx-auto max-w-4xl"
+            />
+          </FadeIn>
+        </div>
+      </section>
 
       {/* WHAT IS IMMVC */}
       <section className="section bg-white">
@@ -58,21 +74,70 @@ export default function IMMVC() {
             <p>
               IMMVC is the International Mamas &amp; Mentors Virtual
               Conference — a global, two-day gathering of women across
-              continents, generations, and life stages.
+              continents, generations, and life stages. It happens on
+              <strong> Mother’s Day weekend</strong> on purpose.
             </p>
             <p>
               Main sessions are <strong>pre-recorded</strong> for international
               accessibility. Supplemental activities — Q&amp;A, networking,
-              prayer &amp; encouragement — are <strong>live</strong>. Virtual
-              Lounge access stays open during the conference and for{' '}
-              <strong>3 days after</strong> each session.
+              prayer &amp; encouragement, breakout lounges — are{' '}
+              <strong>live</strong>. Virtual Lounge access stays open during
+              the conference and for <strong>3 days after</strong> each session.
+            </p>
+            <p className="editorial italic text-2xl text-magenta">
+              {MISSION_DR_CK}
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* IMMVC 2026 DETAILS */}
+      {/* CONFERENCE HISTORY TIMELINE */}
       <section className="section bg-blush-soft">
+        <div className="container-x">
+          <FadeIn className="text-center max-w-3xl mx-auto">
+            <p className="eyebrow-magenta">The Story So Far</p>
+            <h2 className="h-display mt-4 text-ink">
+              A vision that
+              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: 'var(--c-gold-dark)' }}>
+                wouldn’t die.
+              </span>
+            </h2>
+            <div className="gold-line mx-auto w-40 mt-8" />
+          </FadeIn>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {CONFERENCE_HISTORY.map((m, i) => {
+              const isPause = m.year.includes('–');
+              return (
+                <FadeIn key={m.year} delay={i * 80}>
+                  <div className={isPause ? 'card-light h-full' : i % 2 === 0 ? 'card-magenta h-full' : 'card-teal h-full'}>
+                    <p
+                      className={`display-font text-5xl leading-none ${
+                        isPause ? 'text-magenta' : ''
+                      }`}
+                    >
+                      {m.year}
+                    </p>
+                    <div
+                      className="mt-3 w-12 h-px"
+                      style={{ background: isPause ? 'var(--c-gold)' : 'rgba(255,255,255,0.6)' }}
+                    />
+                    <h3 className={`editorial text-xl mt-4 ${isPause ? 'text-ink' : ''}`}>
+                      {m.headline}
+                    </h3>
+                    <p className={`mt-3 text-sm leading-relaxed ${isPause ? 'text-ink/75' : 'text-white/90'}`}>
+                      {m.body}
+                    </p>
+                  </div>
+                </FadeIn>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* IMMVC 2026 DETAILS */}
+      <section className="section bg-white">
         <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
             <p className="eyebrow-teal">IMMVC 2026</p>
@@ -105,7 +170,7 @@ export default function IMMVC() {
       </section>
 
       {/* TICKETS */}
-      <section className="section bg-white">
+      <section className="section bg-blush-soft">
         <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
             <p className="eyebrow-magenta">Ticket Options</p>
@@ -184,7 +249,7 @@ export default function IMMVC() {
       </section>
 
       {/* FAQ */}
-      <section className="section bg-blush-soft">
+      <section className="section bg-white">
         <div className="container-x grid lg:grid-cols-12 gap-12 items-start">
           <FadeIn className="lg:col-span-4 lg:sticky lg:top-32">
             <p className="eyebrow-magenta">FAQs</p>
@@ -231,9 +296,7 @@ export default function IMMVC() {
               <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-magenta">
                 Register Free
               </a>
-              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">
-                Go VIP — $147
-              </a>
+              <Link to="/about" className="btn-ghost-light">Read Dr. CK’s Story →</Link>
             </div>
           </FadeIn>
         </div>

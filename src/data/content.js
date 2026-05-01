@@ -54,6 +54,69 @@ export const ABOUT_TAGLINE = 'We are here to push, pour, and prosper together.';
 export const MISSION =
   'Celebrating motherhood and otherhood at every stage of life — the good, the bad, the ups, the downs, the messy, the pretty — and everything in between.';
 
+// Dr. CK's mission for the conference, in her own words.
+export const MISSION_DR_CK =
+  'I want IMMVC to be a safe space for women to attend, to be mentored, and to be empowered to mentor others through their own unique journeys and lived experiences.';
+
+// Signature closing line — Dr. CK's voice.
+export const WELCOME_GORGEOUS = 'So welcome, gorgeous. You belong here.';
+
+// -------------------- DR. CK BIO --------------------
+// Used verbatim on About + Home. Do not paraphrase.
+export const DR_CK_INTRO =
+  'As the International Mamas and Mentors Virtual Conference host, Dr. Charity Campbell-Kapela connects mothers, mothers-in-waiting, and mentors from around the world with the resources they need to create positive change in their lives and in the lives of their families.';
+
+export const DR_CK_BIO =
+  'Dr. Campbell-Kapela is the Founder and CEO of C3 Global Agency and a globally recognized authority in digital organization development, global leadership, and cross-cultural relations. She is also the author of the groundbreaking book, "Letting Adam Sleep: Living, Loving, and Letting Go." Dr. Campbell-Kapela, affectionately known as Dr. CK, is originally from the United States and has explored over 30 countries, connecting with countless amazing men and women across various industries.';
+
+// -------------------- CONFERENCE ORIGIN STORY --------------------
+// Dr. CK's own words. Each paragraph is preserved verbatim. The
+// site renders these as a long-form "In Dr. CK's Own Words" section.
+export const CONFERENCE_STORY = [
+  'The Mamas and Mentors Conference is a vision that God gave me about 10 years ago. It started as an idea to celebrate the women in my life who served as mamas and mentors and helped me develop into the woman I had become.',
+  'I never did anything with it.',
+  'Fast forward to 2022. There was such a huge tug on my heart to not let the vision die, but to expand it into an experience that celebrates a woman at every stage of life — the good, the bad, the ugly, the ups, the downs, the messy, the pretty, and everything in between.',
+  'I had realized that Mother’s Day could be a trigger for many women. It was a trigger for women who were not able to become a mother. It was a trigger for women who had just recently lost a mother. It was a trigger for women who had children but lost their children. It was a trigger for women dealing with postpartum depression. Mother’s Day was a trigger for the single mom who was doing everything for her child — no help, no support, nothing — and just really felt burnt out.',
+  'It was a trigger for so many women who, even though they wanted to post “Happy Mother’s Day” on social media like everyone else, it just wasn’t a happy occasion. And so in 2022, I wanted to share stories from women around the world who could show another woman that she was not alone.',
+  'She wasn’t alone when she felt regret from having an abortion at some point in her life. She wasn’t alone in wondering whether she would ever become a mom because she was dealing with fertility issues. She wasn’t alone because she had suffered trauma in her body that would keep her from having a baby.',
+  'In 2022, the flagship conference was a huge success. I couldn’t believe that women from around the world who I had contacted and reached out to were actually interested in sharing their very personal and vulnerable truths. As they shared, so many women responded with gratitude, saying “thank you” — because this was so needed. I had no idea what it would turn into.',
+  'In 2023, I became pregnant after eloping with my husband. My body wasn’t feeling it, and I wasn’t able to host the conference that year.',
+  'In 2024, I had just given birth a few months prior, and my body still wasn’t ready to put out all the energy necessary to make it happen. I almost let this vision die, because there is a lot that goes into it.',
+  'But then I started thinking about how I felt as a new mom. I started thinking about, once again, the women whose stories were never told. The women who would be triggered yet again by another Mother’s Day weekend. And I couldn’t let them be alone.',
+  'So in 2025, we started up again with our second conference. This time, we had over 30 women sharing, and the stories were even more raw. They were so authentic, transparent, and vulnerable. Many of them crushed my heart just to hear — losing quadruplets, having a stillborn child, spending another Mother’s Day without mom after she had just recently passed away.',
+  'In 2025, I brought together women from more than 10 countries, and they shared their stories.',
+  'Now here we are in 2026 with our third virtual conference. I don’t have more than 30 women this time, but I can guarantee you that the stories are just as impactful, and they are coming from different places around the world.',
+  'I believe you will find at least one woman’s story, one woman’s testimony, one woman’s lived experience that you can relate to in this conference. I want IMMVC to be a safe space for women to attend, to be mentored, and to be empowered to mentor others through their own unique journeys and lived experiences.',
+];
+
+// Conference-history milestones for the timeline component.
+export const CONFERENCE_HISTORY = [
+  {
+    year: '2022',
+    headline: 'The flagship conference.',
+    body:
+      'Women from around the world said yes to sharing their personal, vulnerable truths. The response was overwhelming gratitude — this was so needed.',
+  },
+  {
+    year: '2023–24',
+    headline: 'A pause that almost ended it.',
+    body:
+      'Pregnancy, eloping, and a new baby. The vision almost died. Then the thought of the women whose stories were never told brought it back.',
+  },
+  {
+    year: '2025',
+    headline: '30+ women. 10+ countries.',
+    body:
+      'The second conference returned, raw and unvarnished — quadruplet loss, stillbirth, the first Mother’s Day without mom. Stories that crushed and healed in the same breath.',
+  },
+  {
+    year: '2026',
+    headline: 'The third virtual conference.',
+    body:
+      'Different women. Different countries. Just as impactful. We believe you will find at least one woman’s story you can relate to here.',
+  },
+];
+
 // -------------------- WHO IT'S FOR --------------------
 export const WHO_ITS_FOR = [
   'The mama who pours into everyone and is finally ready to receive',
