@@ -46,8 +46,41 @@ export default function IMMVC() {
         </a>
       </PageHero>
 
-      {/* MOTHER'S DAY INSIGHT — the why */}
+      {/* LIVE ARENA — for already-registered attendees */}
       <section className="bg-white -mt-14 relative z-10">
+        <div className="container-x">
+          <FadeIn>
+            <a
+              href={LINKS.LIVE_ARENA}
+              target="_blank"
+              rel="noreferrer"
+              className="group block rounded-3xl px-6 py-5 sm:px-8 sm:py-6 bg-ink text-white max-w-4xl mx-auto"
+              style={{ border: '2px solid var(--c-gold)' }}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-4 min-w-0">
+                  <span className="relative flex h-3 w-3 shrink-0">
+                    <span className="absolute inset-0 rounded-full bg-magenta animate-ping opacity-75" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-magenta" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="eyebrow text-blush">Already registered?</p>
+                    <p className="editorial text-lg sm:text-xl mt-1 text-white truncate">
+                      Enter the Live Arena <span className="text-white/60 font-sans not-italic text-[11px] uppercase tracking-[0.22em] ml-2">live.mamasandmentors.com</span>
+                    </p>
+                  </div>
+                </div>
+                <span className="display-font text-xs uppercase tracking-[0.32em] text-[var(--c-gold-light)] group-hover:text-white transition shrink-0">
+                  Enter →
+                </span>
+              </div>
+            </a>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* MOTHER'S DAY INSIGHT — the why */}
+      <section className="bg-white pt-10 pb-0">
         <div className="container-x">
           <FadeIn>
             <QuoteCard

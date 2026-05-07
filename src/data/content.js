@@ -4,10 +4,11 @@
 // truth for voice, nav, and topic content.
 
 // -------------------- LINKS --------------------
-// Real GoHighLevel funnels live; a few funnels still need URLs.
+// Real GoHighLevel funnels live; assessment funnel still TBD.
 export const LINKS = {
   REGISTER: 'https://register.mamasandmentors.com',
   VIP: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
+  LIVE_ARENA: 'https://live.mamasandmentors.com',
   ASSESSMENT: '[ASSESSMENT_LINK]',
   VIP_SWAG_BAG: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   INSTAGRAM: 'https://www.instagram.com/immvc2026',
@@ -16,7 +17,8 @@ export const LINKS = {
   YOUTUBE: 'https://www.youtube.com/DrCharityTV',
   LINKEDIN: '[LINKEDIN_LINK]',
   EMAIL: 'mailto:hello@mamasandmentors.com',
-  BOOKING: '[BOOKING_LINK]',
+  // Speaking inquiries route through email (no separate booking funnel).
+  BOOKING: 'mailto:hello@mamasandmentors.com?subject=Speaking%20Inquiry%20—%20Dr.%20CK',
 };
 
 // -------------------- NAVIGATION --------------------

@@ -49,6 +49,17 @@ export default function Footer() {
         <div className="lg:col-span-3">
           <h4 className="eyebrow-blush mb-4">Stay Close</h4>
           <ul className="space-y-2 text-sm text-white/85">
+            <li>
+              <a
+                href={LINKS.LIVE_ARENA}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 hover:text-[var(--c-gold-light)] transition font-bold"
+              >
+                <span className="inline-block h-2 w-2 rounded-full bg-magenta animate-pulse" />
+                Live Arena · live.mamasandmentors.com
+              </a>
+            </li>
             <li><a href={LINKS.EMAIL} className="hover:text-[var(--c-gold-light)] transition">hello@mamasandmentors.com</a></li>
             <li><a href={LINKS.INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-[var(--c-gold-light)] transition">Instagram · @immvc2026</a></li>
             <li><a href={LINKS.TIKTOK} target="_blank" rel="noreferrer" className="hover:text-[var(--c-gold-light)] transition">TikTok · @immvc2026</a></li>
