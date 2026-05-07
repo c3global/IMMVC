@@ -1,41 +1,95 @@
-// Photography slot — renders a stock placeholder image with a visible
-// "STOCK PLACEHOLDER" tag so reviewers know it must be replaced with
-// brand photography before launch. Pass `src` (recommended: a URL from
-// content.js STOCK_PHOTOS) and an `alt` description.
+import { useState, useEffect } from 'react';
+
+// Photo slot. Pass either:
+//   - photo={PHOTOS.homeHero}   (preferred — auto-falls back to placeholder)
+//   - src="..." [+ label="..."]
+// On image-load failure, renders a soft pink/teal placeholder card with
+// the expected filename so it's obvious which file still needs upload.
 
 export default function Photo({
-  src,
-  alt = 'Stock placeholder',
+  photo,
+  src: srcProp,
+  label: labelProp,
+  alt = '',
   ratio = '4/5',
   className = '',
   framed = true,
-  showTag = true,
   tone = 'magenta',
 }) {
+  const initialSrc = photo?.src ?? srcProp;
+  const expectedFilename = photo?.label ?? labelProp;
+
+  const [src, setSrc] = useState(initialSrc);
+  const [errored, setErrored] = useState(false);
+
+  useEffect(() => {
+    setSrc(initialSrc);
+    setErrored(false);
+  }, [initialSrc]);
+
   const overlay =
     tone === 'magenta'
-      ? 'bg-gradient-to-tr from-magenta/35 via-transparent to-teal/15'
+      ? 'bg-gradient-to-tr from-magenta/20 via-transparent to-teal/10'
       : tone === 'teal'
-      ? 'bg-gradient-to-tr from-teal/35 via-transparent to-magenta/15'
-      : 'bg-gradient-to-tr from-ink/30 via-transparent to-transparent';
+      ? 'bg-gradient-to-tr from-teal/20 via-transparent to-magenta/10'
+      : 'bg-gradient-to-tr from-ink/20 via-transparent to-transparent';
 
   return (
     <div
       className={`${framed ? 'photo-frame' : 'relative overflow-hidden rounded-3xl'} ${className}`}
       style={{ aspectRatio: ratio.replace('/', ' / ') }}
     >
-      <img
-        src={src}
-        alt={alt}
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="lazy"
-        decoding="async"
-      />
-      <div className={`absolute inset-0 pointer-events-none ${overlay}`} />
-      {showTag && (
-        <span className="stock-tag">
-          Stock · replace at launch
-        </span>
+      {!errored && src ? (
+        <>
+          <img
+            src={src}
+            alt={alt}
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+            onError={() => setErrored(true)}
+          />
+          <div className={`absolute inset-0 pointer-events-none ${overlay}`} />
+        </>
+      ) : (
+        <Placeholder filename={expectedFilename} />
+      )}
+    </div>
+  );
+}
+
+function Placeholder({ filename }) {
+  return (
+    <div
+      className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-6"
+      style={{
+        background:
+          'linear-gradient(135deg, #ffe6ee 0%, #ffd0e1 50%, #c8eef0 100%)',
+      }}
+    >
+      <div className="absolute inset-3 rounded-[inherit] border border-dashed" style={{ borderColor: 'rgba(212, 175, 55, 0.7)' }} />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="relative h-8 w-8 text-magenta opacity-70"
+        aria-hidden="true"
+      >
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <circle cx="9" cy="11" r="1.6" />
+        <path d="M3 16l5-4 4 3 3-2 6 5" />
+      </svg>
+      <p className="relative text-[10px] uppercase tracking-[0.32em] text-ink/70 font-bold">
+        Photo placeholder
+      </p>
+      {filename && (
+        <p className="relative editorial italic text-sm text-ink/65">
+          Upload to <code className="font-mono not-italic">/public/photos/{filename}</code>
+        </p>
       )}
     </div>
   );

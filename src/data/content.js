@@ -354,29 +354,36 @@ export const FAQS = [
   },
 ];
 
-// -------------------- STOCK PHOTOGRAPHY PLACEHOLDERS --------------------
-// Curated Unsplash URLs that match the multi-generational, diverse,
-// emotional-range mood Dr. CK shared. ALL of these are stock and must
-// be replaced with brand photography before launch.
+// -------------------- PHOTOGRAPHY --------------------
+// Local image paths — drop your files into /public/photos/ with these
+// exact filenames and they'll appear automatically. Until a file is
+// uploaded, the <Photo> component renders a soft pink/teal placeholder
+// card labeled with the filename so it's obvious what to add.
+//
+// See /public/photos/README.txt for the full upload guide.
+export const PHOTOS = {
+  homeHero: { src: '/photos/home-hero.jpg', label: 'home-hero.jpg' },
+  aboutDrCK: { src: '/photos/about-dr-ck.jpg', label: 'about-dr-ck.jpg' },
+  aboutStory: { src: '/photos/about-story.jpg', label: 'about-story.jpg' },
+  topicMotherhood: { src: '/photos/topic-motherhood.jpg', label: 'topic-motherhood.jpg' },
+  topicMentorship: { src: '/photos/topic-mentorship.jpg', label: 'topic-mentorship.jpg' },
+  topicHealing: { src: '/photos/topic-healing.jpg', label: 'topic-healing.jpg' },
+  topicGrief: { src: '/photos/topic-grief.jpg', label: 'topic-grief.jpg' },
+  communityLounges: { src: '/photos/community-lounges.jpg', label: 'community-lounges.jpg' },
+  resourceReplay: { src: '/photos/resource-replay.jpg', label: 'resource-replay.jpg' },
+  resourceAssessment: { src: '/photos/resource-assessment.jpg', label: 'resource-assessment.jpg' },
+};
+
+// Backwards-compat: kept so old imports don't break. Prefer PHOTOS above.
 export const STOCK_PHOTOS = {
-  heroLounge:
-    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80', // diverse women laughing
-  motherDaughter:
-    'https://images.unsplash.com/photo-1518050227004-c4cb7104d79a?auto=format&fit=crop&w=1200&q=80', // mother with daughter
-  mentorship:
-    'https://images.unsplash.com/photo-1573496773905-f5b17e717f05?auto=format&fit=crop&w=1200&q=80', // women in conversation
-  prayer:
-    'https://images.unsplash.com/photo-1518398046578-8cca57782e17?auto=format&fit=crop&w=1200&q=80', // hands in prayer
-  reflection:
-    'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=80', // black woman in soft light
-  group:
-    'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=80', // group of women
-  multigen:
-    'https://images.unsplash.com/photo-1581579189379-44e26ee05b25?auto=format&fit=crop&w=1200&q=80', // multi-generational
-  singleMom:
-    'https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1200&q=80', // mother and child
-  drCK:
-    'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1000&q=80', // confident professional woman portrait
-  conference:
-    'https://images.unsplash.com/photo-1559223607-a43c990c692c?auto=format&fit=crop&w=1400&q=80', // event/conference scene
+  heroLounge: PHOTOS.homeHero.src,
+  drCK: PHOTOS.aboutDrCK.src,
+  reflection: PHOTOS.aboutStory.src,
+  singleMom: PHOTOS.topicMotherhood.src,
+  mentorship: PHOTOS.topicMentorship.src,
+  prayer: PHOTOS.topicGrief.src,
+  group: PHOTOS.communityLounges.src,
+  conference: PHOTOS.resourceReplay.src,
+  motherDaughter: PHOTOS.topicMotherhood.src,
+  multigen: PHOTOS.communityLounges.src,
 };

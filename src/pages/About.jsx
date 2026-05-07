@@ -10,7 +10,7 @@ import {
   CONFERENCE_STORY,
   MISSION_DR_CK,
   WELCOME_GORGEOUS,
-  STOCK_PHOTOS,
+  PHOTOS,
 } from '../data/content';
 
 export default function About() {
@@ -34,10 +34,10 @@ export default function About() {
         <div className="container-x grid lg:grid-cols-12 gap-12 items-center">
           <FadeIn className="lg:col-span-5">
             <Photo
-              src={STOCK_PHOTOS.drCK}
+              photo={PHOTOS.aboutDrCK}
               ratio="4/5"
               tone="magenta"
-              alt="Dr. Charity C. Campbell-Kapela — stock placeholder"
+              alt="Dr. Charity C. Campbell-Kapela"
             />
           </FadeIn>
 
@@ -79,10 +79,10 @@ export default function About() {
           <div className="mt-16 grid lg:grid-cols-12 gap-12 items-start">
             <FadeIn className="lg:col-span-4 lg:sticky lg:top-32">
               <Photo
-                src={STOCK_PHOTOS.reflection}
+                photo={PHOTOS.aboutStory}
                 ratio="4/5"
                 tone="magenta"
-                alt="Reflective portrait — stock placeholder"
+                alt="Dr. CK · reflective portrait"
               />
               <div className="mt-6">
                 <QuoteCard

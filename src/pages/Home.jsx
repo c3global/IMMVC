@@ -12,7 +12,7 @@ import {
   WHO_ITS_FOR,
   TESTIMONIALS,
   TOPIC_PAGES,
-  STOCK_PHOTOS,
+  PHOTOS,
   TAGLINE,
   WELCOME_GORGEOUS,
   MISSION_DR_CK,
@@ -67,7 +67,7 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn delay={200} className="lg:col-span-5">
-            <Photo src={STOCK_PHOTOS.heroLounge} ratio="4/5" alt="Diverse women in community — stock placeholder" />
+            <Photo photo={PHOTOS.homeHero} ratio="4/5" alt="Mamas & Mentors community" />
           </FadeIn>
         </div>
       </section>

@@ -47,8 +47,8 @@ export default function TopicPage({ topic, photo, accent = 'magenta' }) {
 
           <FadeIn delay={150} className="lg:col-span-5">
             <Photo
-              src={photo}
-              alt={`${topic.eyebrow} — stock photography placeholder`}
+              photo={photo}
+              alt={`${topic.eyebrow} — brand photography`}
               ratio="4/5"
               tone={accent === 'teal' ? 'magenta' : 'teal'}
             />

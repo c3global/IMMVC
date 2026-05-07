@@ -1,7 +1,7 @@
 import PageHero from '../components/PageHero';
 import FadeIn from '../components/FadeIn';
 import Photo from '../components/Photo';
-import { LINKS, STOCK_PHOTOS } from '../data/content';
+import { LINKS, PHOTOS } from '../data/content';
 
 const COMING_SOON = [
   { title: 'Speaker Resources', body: 'Curated tools, slides, and reflections from past IMMVC speakers.' },
@@ -43,7 +43,7 @@ export default function ResourceHub() {
                 value — included free with VIP.
               </p>
               <div className="mt-6">
-                <Photo src={STOCK_PHOTOS.conference} ratio="16/9" tone="teal" alt="Replay library mockup — stock placeholder" />
+                <Photo photo={PHOTOS.resourceReplay} ratio="16/9" tone="teal" alt="Conference replay library" />
               </div>
               <div className="mt-auto pt-8">
                 <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-light w-full">
@@ -65,7 +65,7 @@ export default function ResourceHub() {
                 what you need next.
               </p>
               <div className="mt-6">
-                <Photo src={STOCK_PHOTOS.reflection} ratio="16/9" tone="magenta" alt="Assessment preview — stock placeholder" />
+                <Photo photo={PHOTOS.resourceAssessment} ratio="16/9" tone="magenta" alt="Assessment preview" />
               </div>
               <div className="mt-auto pt-8">
                 <a href={LINKS.ASSESSMENT} target="_blank" rel="noreferrer" className="btn-ink w-full">

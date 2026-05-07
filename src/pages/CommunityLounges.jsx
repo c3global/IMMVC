@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import FadeIn from '../components/FadeIn';
 import QuoteCard from '../components/QuoteCard';
 import Photo from '../components/Photo';
-import { LINKS, LOUNGES, STOCK_PHOTOS } from '../data/content';
+import { LINKS, LOUNGES, PHOTOS } from '../data/content';
 
 export default function CommunityLounges() {
   return (
@@ -37,7 +37,7 @@ export default function CommunityLounges() {
           </FadeIn>
 
           <FadeIn delay={150} className="lg:col-span-5">
-            <Photo src={STOCK_PHOTOS.group} ratio="4/5" tone="teal" alt="Group of women — stock placeholder" />
+            <Photo photo={PHOTOS.communityLounges} ratio="4/5" tone="teal" alt="Mamas & Mentors community lounges" />
           </FadeIn>
         </div>
       </section>
