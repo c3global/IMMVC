@@ -4,12 +4,13 @@
 // truth for voice, nav, and topic content.
 
 // -------------------- LINKS --------------------
-// Real GoHighLevel funnels live; assessment funnel still TBD.
+// Real GoHighLevel funnels live; community + Sunday Reset URLs TBD.
 export const LINKS = {
   REGISTER: 'https://register.mamasandmentors.com',
   VIP: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   LIVE_ARENA: 'https://live.mamasandmentors.com',
-  ASSESSMENT: '[ASSESSMENT_LINK]',
+  JOIN_COMMUNITY: '[JOIN_COMMUNITY_LINK]',
+  SUNDAY_RESET: '[SUNDAY_RESET_LINK]',
   VIP_SWAG_BAG: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   INSTAGRAM: 'https://www.instagram.com/immvc2026',
   TIKTOK: 'https://www.tiktok.com/@immvc2026',
@@ -33,7 +34,7 @@ export const NAV_PRIMARY = [
 
 export const NAV_SECONDARY = [
   { to: '/about', label: 'About' },
-  { to: '/community-lounges', label: 'Community Lounges' },
+  { to: '/community', label: 'Join the Community' },
   { to: '/resources', label: 'Resource Hub' },
   { to: '/connect', label: 'Connect' },
 ];
@@ -371,7 +372,7 @@ export const PHOTOS = {
   topicMentorship: { src: '/photos/topic-mentorship.jpg', label: 'topic-mentorship.jpg' },
   topicHealing: { src: '/photos/topic-healing.jpg', label: 'topic-healing.jpg' },
   topicGrief: { src: '/photos/topic-grief.jpg', label: 'topic-grief.jpg' },
-  communityLounges: { src: '/photos/community-lounges.jpg', label: 'community-lounges.jpg' },
+  community: { src: '/photos/community.jpg', label: 'community.jpg' },
   resourceReplay: { src: '/photos/resource-replay.jpg', label: 'resource-replay.jpg' },
   resourceAssessment: { src: '/photos/resource-assessment.jpg', label: 'resource-assessment.jpg' },
 };
@@ -384,8 +385,8 @@ export const STOCK_PHOTOS = {
   singleMom: PHOTOS.topicMotherhood.src,
   mentorship: PHOTOS.topicMentorship.src,
   prayer: PHOTOS.topicGrief.src,
-  group: PHOTOS.communityLounges.src,
+  group: PHOTOS.community.src,
   conference: PHOTOS.resourceReplay.src,
   motherDaughter: PHOTOS.topicMotherhood.src,
-  multigen: PHOTOS.communityLounges.src,
+  multigen: PHOTOS.community.src,
 };

@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="absolute inset-x-0 top-0 gold-line" />
 
       <div className="container-x relative grid gap-12 py-20 lg:grid-cols-12">
-        <div className="lg:col-span-4 space-y-5">
+        <div className="lg:col-span-3 space-y-5">
           <Logo variant="white" height={64} />
           <p className="text-sm text-white/70 leading-relaxed max-w-xs">
             A faith-led community celebrating motherhood and otherhood at every
@@ -20,7 +20,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-2">
           <h4 className="eyebrow-blush mb-4">Explore</h4>
           <ul className="space-y-2 text-sm text-white/85">
             {NAV_PRIMARY.map((item) => (
@@ -43,6 +43,32 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-2">
+          <h4 className="eyebrow-blush mb-4">Get Involved</h4>
+          <ul className="space-y-2 text-sm text-white/85">
+            <li>
+              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="hover:text-[var(--c-gold-light)] transition">
+                Register Free for IMMVC
+              </a>
+            </li>
+            <li>
+              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="hover:text-[var(--c-gold-light)] transition">
+                Upgrade to VIP — $147
+              </a>
+            </li>
+            <li>
+              <a href={LINKS.JOIN_COMMUNITY} target="_blank" rel="noreferrer" className="hover:text-[var(--c-gold-light)] transition">
+                Join the Community
+              </a>
+            </li>
+            <li>
+              <a href={LINKS.SUNDAY_RESET} target="_blank" rel="noreferrer" className="hover:text-[var(--c-gold-light)] transition">
+                Sunday Reset
+              </a>
+            </li>
           </ul>
         </div>
 

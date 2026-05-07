@@ -19,15 +19,15 @@ export default function ResourceHub() {
         accent="every season."
         intro="A growing library of replays, tools, and reflections — for the mama, the mentor, and every woman in between."
       >
-        <a href={LINKS.ASSESSMENT} target="_blank" rel="noreferrer" className="btn-light">
-          Take the Assessment
+        <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-light">
+          Upgrade to VIP — $147
         </a>
-        <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">
-          Unlock the Replay Library
+        <a href={LINKS.JOIN_COMMUNITY} target="_blank" rel="noreferrer" className="btn-ghost-light">
+          Join the Community →
         </a>
       </PageHero>
 
-      {/* REPLAY LIBRARY + ASSESSMENT */}
+      {/* REPLAY LIBRARY + VIP UPGRADE */}
       <section className="section bg-white">
         <div className="container-x grid lg:grid-cols-2 gap-8">
           <FadeIn>
@@ -55,21 +55,22 @@ export default function ResourceHub() {
 
           <FadeIn delay={120}>
             <div className="card-light h-full flex flex-col">
-              <p className="eyebrow-teal">The Assessment</p>
+              <p className="eyebrow-teal">Go Deeper · VIP</p>
               <h2 className="editorial text-3xl mt-4 text-ink/90">
-                Which season of mama or mentor are you in?
+                Want the most immersive IMMVC experience?
               </h2>
               <div className="gold-line mt-6 w-16" />
               <p className="mt-6 text-ink/75 leading-relaxed">
-                A free reflection tool to help you name where you are — and
-                what you need next.
+                The VIP Pass unlocks the full replay library, the private
+                community, after-hours sessions, priority Q&amp;A, the resource
+                vault, and the VIP swag bag — all for $147.
               </p>
               <div className="mt-6">
-                <Photo photo={PHOTOS.resourceAssessment} ratio="16/9" tone="magenta" alt="Assessment preview" />
+                <Photo photo={PHOTOS.resourceAssessment} ratio="16/9" tone="magenta" alt="VIP experience" />
               </div>
               <div className="mt-auto pt-8">
-                <a href={LINKS.ASSESSMENT} target="_blank" rel="noreferrer" className="btn-ink w-full">
-                  Start the Assessment →
+                <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ink w-full">
+                  Upgrade to VIP — $147 →
                 </a>
               </div>
             </div>
@@ -133,8 +134,8 @@ export default function ResourceHub() {
               <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
                 Register Free
               </a>
-              <a href={LINKS.ASSESSMENT} target="_blank" rel="noreferrer" className="btn-ghost-light">
-                Take the Assessment
+              <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">
+                Upgrade to VIP — $147
               </a>
             </div>
           </FadeIn>

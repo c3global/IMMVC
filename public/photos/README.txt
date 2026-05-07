@@ -34,9 +34,9 @@ TOPIC PAGES
   topic-grief.jpg            Hero photo on Grief & Grace.
 
 ------------------------------------------------------------------
-COMMUNITY LOUNGES
+JOIN THE COMMUNITY
 ------------------------------------------------------------------
-  community-lounges.jpg      Hero photo on Community Lounges.
+  community.jpg              Hero photo on the Join the Community page.
 
 ------------------------------------------------------------------
 RESOURCE HUB

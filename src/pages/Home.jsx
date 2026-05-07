@@ -218,7 +218,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ASSESSMENT TEASER — teal block */}
+      {/* VIP UPGRADE TEASER — teal block */}
       <section className="section bg-white">
         <div className="container-x">
           <FadeIn>
@@ -227,21 +227,22 @@ export default function Home() {
               <span className="gold-vert-line" style={{ right: '6%' }} />
               <div className="relative grid lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-7">
-                  <p className="eyebrow text-white/90">Take the Assessment</p>
+                  <p className="eyebrow text-white/90">Want the deepest experience?</p>
                   <h2 className="h-display mt-4">
-                    Which season of mama or mentor
+                    Upgrade to VIP.
                     <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>
-                      are you in?
+                      The most value ever given at IMMVC.
                     </span>
                   </h2>
                   <p className="mt-6 text-white/95 leading-relaxed max-w-xl">
-                    A free reflection tool to help you name where you are — and
-                    what you need next.
+                    Full replay library · Private community access · VIP
+                    after-hours · Priority Q&amp;A · Resource Vault · VIP swag
+                    bag. Just $147.
                   </p>
                 </div>
                 <div className="lg:col-span-5 lg:text-right">
-                  <a href={LINKS.ASSESSMENT} target="_blank" rel="noreferrer" className="btn-light">
-                    Start the Assessment →
+                  <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-light">
+                    Upgrade to VIP — $147 →
                   </a>
                 </div>
               </div>

@@ -8,7 +8,7 @@ import About from './pages/About';
 import IMMVC from './pages/IMMVC';
 import ResourceHub from './pages/ResourceHub';
 import Connect from './pages/Connect';
-import CommunityLounges from './pages/CommunityLounges';
+import Community from './pages/Community';
 
 import MotherhoodOtherhood from './pages/MotherhoodOtherhood';
 import MentorshipLeadership from './pages/MentorshipLeadership';
@@ -33,8 +33,8 @@ export default function App() {
 
           {/* Secondary pages — footer nav */}
           <Route path="/about" element={<About />} />
-          <Route path="/community-lounges" element={<CommunityLounges />} />
-          <Route path="/community" element={<Navigate to="/community-lounges" replace />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/community-lounges" element={<Navigate to="/community" replace />} />
           <Route path="/resources" element={<ResourceHub />} />
           <Route path="/connect" element={<Connect />} />
 

@@ -39,8 +39,8 @@ export default function TopicPage({ topic, photo, accent = 'magenta' }) {
               <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
                 Register Free
               </a>
-              <Link to="/community-lounges" className="btn-ghost-light">
-                Find Your Lounge →
+              <Link to="/community" className="btn-ghost-light">
+                Join the Community →
               </Link>
             </div>
           </FadeIn>
