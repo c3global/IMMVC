@@ -44,6 +44,9 @@ export default function IMMVC() {
         <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ghost-light">
           Go VIP — $147
         </a>
+        <a href={LINKS.SCHEDULE} target="_blank" rel="noopener noreferrer" className="btn-ghost-light">
+          View Schedule →
+        </a>
       </PageHero>
 
       {/* LIVE ARENA — for already-registered attendees */}
@@ -199,6 +202,23 @@ export default function IMMVC() {
               </FadeIn>
             ))}
           </div>
+
+          {/* Full schedule CTA */}
+          <FadeIn delay={300}>
+            <div className="mt-12 text-center">
+              <a
+                href={LINKS.SCHEDULE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-magenta"
+              >
+                View the Full 2026 Schedule →
+              </a>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.28em] text-ink/55">
+                immvc.mamasandmentors.com/schedule2026
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

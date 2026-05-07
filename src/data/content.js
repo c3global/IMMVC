@@ -4,13 +4,16 @@
 // truth for voice, nav, and topic content.
 
 // -------------------- LINKS --------------------
-// Real GoHighLevel funnels live; community + Sunday Reset URLs TBD.
+// All real URLs. Assessment funnel still TBD.
 export const LINKS = {
   REGISTER: 'https://register.mamasandmentors.com',
   VIP: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   LIVE_ARENA: 'https://live.mamasandmentors.com',
-  JOIN_COMMUNITY: '[JOIN_COMMUNITY_LINK]',
-  SUNDAY_RESET: '[SUNDAY_RESET_LINK]',
+  SCHEDULE: 'http://immvc.mamasandmentors.com/schedule2026',
+  JOIN_COMMUNITY:
+    'https://community.c3global.co/communities/groups/mama-mentor-nexus/home?invite=69fc72c1876900a91b76921d',
+  SUNDAY_RESET: 'https://prayer.mamasandmentors.com/go',
+  ASSESSMENT: '[ASSESSMENT_LINK]',
   VIP_SWAG_BAG: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   INSTAGRAM: 'https://www.instagram.com/immvc2026',
   TIKTOK: 'https://www.tiktok.com/@immvc2026',
