@@ -47,7 +47,7 @@ export default function Community() {
           </FadeIn>
 
           <FadeIn delay={150} className="lg:col-span-5">
-            <Photo photo={PHOTOS.community} ratio="4/5" tone="teal" alt="Mamas & Mentors community" />
+            <Photo photo={PHOTOS.community} natural ratio="4/5" alt="Mamas & Mentors community" />
           </FadeIn>
         </div>
       </section>
@@ -103,11 +103,9 @@ export default function Community() {
                 <div className="lg:col-span-6">
                   <Photo
                     photo={PHOTOS.sundayReset}
+                    natural
                     ratio="1/1"
-                    framed={false}
                     alt="Sunday Reset"
-                    tone="ink"
-                    className="bg-white/10"
                   />
                 </div>
               </div>
@@ -122,8 +120,8 @@ export default function Community() {
           <FadeIn className="lg:col-span-5">
             <Photo
               photo={PHOTOS.empowermentPortal}
+              natural
               ratio="4/5"
-              tone="magenta"
               alt="Empowerment Portal"
             />
           </FadeIn>
@@ -169,11 +167,10 @@ export default function Community() {
             <div className="gold-line mx-auto w-40 mt-8" />
           </FadeIn>
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2">
+          <div className="mt-16 grid gap-6 sm:grid-cols-3">
             {[
-              { t: 'Sunday Reset', b: 'A weekly gathering to reset, refill, and start the week soft and grounded.' },
+              { t: 'Sunday Reset', b: 'The weekly prayer & encouragement gathering — a soft place to land, breathe, and start the week refilled.' },
               { t: 'Monthly Networking', b: 'Cross-cultural conversations with women from every continent — a global table of mamas and mentors.' },
-              { t: 'Bi-Weekly Prayer & Encouragement', b: 'A consistent, sacred gathering to lift one another up through every chapter.' },
               { t: 'Annual Flagship Conference', b: 'IMMVC is the heartbeat of the movement — three days of teaching, story, and celebration every May.' },
             ].map((r, i) => (
               <FadeIn key={r.t} delay={i * 70}>
@@ -212,8 +209,14 @@ export default function Community() {
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {LOUNGES.map((name, i) => {
               const accentMagenta = i % 2 === 0;
+              // Last item is alone in its row when count % 3 === 1 — center it.
+              const isOrphan = i === LOUNGES.length - 1 && LOUNGES.length % 3 === 1;
               return (
-                <FadeIn key={name} delay={i * 50}>
+                <FadeIn
+                  key={name}
+                  delay={i * 50}
+                  className={isOrphan ? 'lg:col-start-2' : ''}
+                >
                   <div className={accentMagenta ? 'card-magenta' : 'card-teal'}>
                     <span className="display-font text-5xl block leading-none">
                       {String(i + 1).padStart(2, '0')}

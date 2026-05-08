@@ -3,8 +3,15 @@ import { useState, useEffect } from 'react';
 // Photo slot. Pass either:
 //   - photo={PHOTOS.homeHero}   (preferred — auto-falls back to placeholder)
 //   - src="..." [+ label="..."]
+//
 // On image-load failure, renders a soft pink/teal placeholder card with
 // the expected filename so it's obvious which file still needs upload.
+//
+// Modes:
+//   - default:    photo-frame (gold border) + tinted overlay + cropped to ratio
+//   - framed=false: rounded corners, no border, still cropped to ratio
+//   - natural=true: NO border, NO ratio enforcement, NO overlay, image renders
+//                  at native dimensions. Best for graphics/branded images.
 
 export default function Photo({
   photo,
@@ -14,6 +21,7 @@ export default function Photo({
   ratio = '4/5',
   className = '',
   framed = true,
+  natural = false,
   tone = 'magenta',
 }) {
   const initialSrc = photo?.src ?? srcProp;
@@ -29,8 +37,6 @@ export default function Photo({
     setTriedAlt(false);
   }, [initialSrc]);
 
-  // Swap .jpg <-> .png on the same base name. Lets either extension
-  // work without the user knowing which one was wired in code.
   function altExtension(s) {
     if (!s) return null;
     if (s.endsWith('.jpg') || s.endsWith('.JPG')) return s.replace(/\.jpg$/i, '.png');
@@ -50,6 +56,33 @@ export default function Photo({
     setErrored(true);
   }
 
+  // ---------- NATURAL MODE ----------
+  // Render the image at its native dimensions, no border, no overlay.
+  if (natural) {
+    if (!errored && src) {
+      return (
+        <img
+          src={src}
+          alt={alt}
+          className={`block w-full h-auto ${className}`}
+          loading="lazy"
+          decoding="async"
+          onError={handleError}
+        />
+      );
+    }
+    // Fallback placeholder while waiting for upload — uses ratio for sizing.
+    return (
+      <div
+        className={`relative overflow-hidden rounded-3xl ${className}`}
+        style={{ aspectRatio: ratio.replace('/', ' / ') }}
+      >
+        <Placeholder filename={expectedFilename} />
+      </div>
+    );
+  }
+
+  // ---------- FRAMED / RATIO-LOCKED MODE ----------
   const overlay =
     tone === 'magenta'
       ? 'bg-gradient-to-tr from-magenta/20 via-transparent to-teal/10'

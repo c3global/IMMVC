@@ -7,7 +7,7 @@
 // All real URLs. Assessment funnel still TBD.
 export const LINKS = {
   REGISTER: 'https://register.mamasandmentors.com',
-  INSIDER: '[INSIDER_PASS_LINK]',
+  INSIDER: 'https://register.mamasandmentors.com/insider-pass',
   VIP: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   LIVE_ARENA: 'https://live.mamasandmentors.com',
   SCHEDULE: 'http://immvc.mamasandmentors.com/schedule2026',
