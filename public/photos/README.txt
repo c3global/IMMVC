@@ -5,51 +5,58 @@ This folder is where every photo on the website lives. Drop your
 images here from GitHub's web UI:
   Add file → Upload files → drag in your photos → Commit changes
 
-WHEN UPLOADING, USE THESE EXACT FILENAMES (case-sensitive).
-Each filename below is mapped 1:1 to a spot on the site. If a file
-isn't here yet, the page shows a soft pink/teal placeholder card
-with a label so it's obvious what's missing.
+When uploading, use the exact filenames below. If a file isn't here
+yet, the page shows a soft pink/teal placeholder card labeled with the
+expected filename so it's obvious what's missing.
 
 ------------------------------------------------------------------
 HOME PAGE
 ------------------------------------------------------------------
   home-hero.jpg              Right side of the homepage headline.
-                             Recommended: 4:5 portrait, ~1200×1500.
-                             Mood: warm, welcoming, on-brand.
+                             4:5 portrait recommended (~1200×1500).
 
 ------------------------------------------------------------------
 ABOUT PAGE
 ------------------------------------------------------------------
-  about-dr-ck.jpg            Dr. CK's main portrait at the top of
-                             the About page. 4:5 portrait.
-  about-story.jpg            Smaller reflective portrait that sits
-                             alongside the origin story. 4:5.
+  about-dr-ck.jpg            Dr. CK's main portrait at the top.
+                             4:5 portrait.
+  about-story.jpg            Smaller reflective portrait alongside
+                             the origin story. 4:5.
 
 ------------------------------------------------------------------
 TOPIC PAGES
 ------------------------------------------------------------------
-  topic-motherhood.jpg       Hero photo on Motherhood & Otherhood.
-  topic-mentorship.jpg       Hero photo on Mentorship & Leadership.
-  topic-healing.jpg          Hero photo on Healing & Wellness.
-  topic-grief.jpg            Hero photo on Grief & Grace.
+  topic-motherhood.png       Hero on Motherhood & Otherhood.
+  topic-mentorship.png       Hero on Mentorship & Leadership.
+  topic-healing.png          Hero on Healing & Wellness.
+  topic-grief.png            Hero on Grief & Grace.
 
 ------------------------------------------------------------------
 JOIN THE COMMUNITY
 ------------------------------------------------------------------
-  community.jpg              Hero photo on the Join the Community page.
+  community.png              Hero on the Join the Community page.
+  sunday-reset.png           Sunday Reset feature graphic on the
+                             Community page (and Home page Sunday
+                             Reset block).
+  empowerment-portal.jpg     Empowerment Portal feature graphic on
+                             the Community page.
 
 ------------------------------------------------------------------
 RESOURCE HUB
 ------------------------------------------------------------------
-  resource-replay.jpg        Replay library card image (16:9).
+  resource-replay.png        Replay library card image (16:9).
   resource-assessment.jpg    Assessment card image (16:9).
 
 ------------------------------------------------------------------
 NOTES
 ------------------------------------------------------------------
-- File extensions: .jpg or .png both work. If you save as .png,
-  the site will still pick it up (it tries .jpg first, then .png).
+- File extensions: .jpg or .png both work for any slot. The site
+  auto-tries the other extension if the first one isn't found.
+- DO NOT use spaces in filenames. Use lowercase letters with
+  dashes only — e.g. "sunday-reset.png", NOT "Sunday Reset.png".
+  URLs with spaces break in browsers.
 - Highest resolution you have. The site downsizes for performance.
-- Square thumbnails work too — the photo frame crops with care.
 - Once a file is committed here, the placeholder disappears.
-- This README can be deleted once everything is uploaded.
+- If you uploaded a file with a wrong name, click it on GitHub
+  and use the pencil icon → rename. Or delete and re-upload.
+- This README can be deleted once everything is in place.

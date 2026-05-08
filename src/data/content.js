@@ -7,6 +7,7 @@
 // All real URLs. Assessment funnel still TBD.
 export const LINKS = {
   REGISTER: 'https://register.mamasandmentors.com',
+  INSIDER: '[INSIDER_PASS_LINK]',
   VIP: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   LIVE_ARENA: 'https://live.mamasandmentors.com',
   SCHEDULE: 'http://immvc.mamasandmentors.com/schedule2026',
@@ -113,13 +114,103 @@ export const CONFERENCE_HISTORY = [
     year: '2025',
     headline: '30+ women. 10+ countries.',
     body:
-      'The second conference returned, raw and unvarnished — quadruplet loss, stillbirth, the first Mother’s Day without mom. Stories that crushed and healed in the same breath.',
+      'The second conference returned May 9–10, 2025 — raw, unvarnished. Quadruplet loss, stillbirth, the first Mother’s Day without mom. Stories that crushed and healed in the same breath.',
   },
   {
     year: '2026',
     headline: 'The third virtual conference.',
     body:
-      'Different women. Different countries. Just as impactful. We believe you will find at least one woman’s story you can relate to here.',
+      'May 7–9, 2026. Different women. Different countries. Just as impactful — at least one woman’s story you could relate to.',
+  },
+  {
+    year: '2027',
+    headline: 'The fourth — May 5–7.',
+    body:
+      'Wednesday, Thursday, Friday. Three days of stories from across the world. Early bird registration opens May 9, 2026.',
+    upcoming: true,
+  },
+];
+
+// -------------------- 2027 CONFERENCE --------------------
+export const CONF = {
+  year: '2027',
+  number: 'fourth',
+  dates: 'May 5–7, 2027',
+  datesLong: 'May 5–7, 2027 · Wednesday, Thursday, Friday',
+  monthRange: 'May 5–7',
+  duration: 'three days',
+  format: 'Pre-recorded + Live',
+  location: '100% Virtual · Global',
+  lounge: 'During + 3 days after',
+};
+
+// -------------------- EARLY BIRD --------------------
+export const EARLY_BIRD = {
+  windowLabel: 'May 9–16, 2026',
+  windowDetail: 'Opens 12:01am · Closes 11:59pm ET',
+  cta: 'Get Early Bird Access',
+  blurb:
+    'Early bird registration for IMMVC 2027 opens May 9, 2026 and closes May 16, 2026 at 11:59pm ET.',
+};
+
+// -------------------- TICKET TIERS --------------------
+export const TIERS = [
+  {
+    key: 'free',
+    name: 'General Access',
+    price: 'FREE',
+    priceSuffix: '',
+    valueAmount: '$497',
+    tagline: 'No credit card. Ever.',
+    perks: [
+      'Live access to all main sessions',
+      'Interactive Q&A with speakers',
+      'Conference workbook',
+      'Virtual lounge access (during + 3 days after)',
+      'IMMVC community access',
+    ],
+    cta: 'Secure My Free Seat',
+    href: 'REGISTER',
+    accent: 'light',
+  },
+  {
+    key: 'insider',
+    name: 'Insider Pass',
+    price: '$77',
+    priceSuffix: '',
+    valueAmount: '$697',
+    tagline: 'A little deeper. A little more.',
+    plusLabel: 'Everything in General Access — PLUS:',
+    perks: [
+      'Mental Wellness Checklist from Dr. CK',
+      'After-hours evening sessions (all 3 nights)',
+      '14-day 2027 replay access',
+      'One featured resource from the vault',
+    ],
+    cta: 'Get the Insider Pass',
+    href: 'INSIDER',
+    accent: 'teal',
+  },
+  {
+    key: 'vip',
+    name: 'VIP Swag Bag',
+    price: '$147',
+    priceSuffix: '',
+    valueAmount: '$997',
+    tagline: 'All access. All year.',
+    plusLabel: 'Everything in the Insider Pass — PLUS:',
+    perks: [
+      'Full replay library — 2027, 2026, 2025 & 2022',
+      'Complete Resource Vault access',
+      'Exclusive complimentary speaker gifts',
+      'Priority Q&A all weekend',
+      'Private VIP lounge inside IMMVC Studios',
+    ],
+    bonusBlurb:
+      '🎁 Every VIP ticket holder gets a surprise swag bag. It’s already yours.',
+    cta: 'Yes, I Want the Full Experience',
+    href: 'VIP',
+    accent: 'magenta',
   },
 ];
 
@@ -366,17 +457,23 @@ export const FAQS = [
 // uploaded, the <Photo> component renders a soft pink/teal placeholder
 // card labeled with the filename so it's obvious what to add.
 //
+// File extensions: each slot says ".png" OR ".jpg" — but the Photo
+// component auto-falls back to the other extension if the first 404s.
+// So uploading either format with the right base name works.
+//
 // See /public/photos/README.txt for the full upload guide.
 export const PHOTOS = {
   homeHero: { src: '/photos/home-hero.jpg', label: 'home-hero.jpg' },
   aboutDrCK: { src: '/photos/about-dr-ck.jpg', label: 'about-dr-ck.jpg' },
   aboutStory: { src: '/photos/about-story.jpg', label: 'about-story.jpg' },
-  topicMotherhood: { src: '/photos/topic-motherhood.jpg', label: 'topic-motherhood.jpg' },
-  topicMentorship: { src: '/photos/topic-mentorship.jpg', label: 'topic-mentorship.jpg' },
-  topicHealing: { src: '/photos/topic-healing.jpg', label: 'topic-healing.jpg' },
-  topicGrief: { src: '/photos/topic-grief.jpg', label: 'topic-grief.jpg' },
-  community: { src: '/photos/community.jpg', label: 'community.jpg' },
-  resourceReplay: { src: '/photos/resource-replay.jpg', label: 'resource-replay.jpg' },
+  topicMotherhood: { src: '/photos/topic-motherhood.png', label: 'topic-motherhood.png' },
+  topicMentorship: { src: '/photos/topic-mentorship.png', label: 'topic-mentorship.png' },
+  topicHealing: { src: '/photos/topic-healing.png', label: 'topic-healing.png' },
+  topicGrief: { src: '/photos/topic-grief.png', label: 'topic-grief.png' },
+  community: { src: '/photos/community.png', label: 'community.png' },
+  sundayReset: { src: '/photos/sunday-reset.png', label: 'sunday-reset.png' },
+  empowermentPortal: { src: '/photos/empowerment-portal.jpg', label: 'empowerment-portal.jpg' },
+  resourceReplay: { src: '/photos/resource-replay.png', label: 'resource-replay.png' },
   resourceAssessment: { src: '/photos/resource-assessment.jpg', label: 'resource-assessment.jpg' },
 };
 

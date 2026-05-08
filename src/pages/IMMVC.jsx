@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import FadeIn from '../components/FadeIn';
 import QuoteCard from '../components/QuoteCard';
-import { LINKS, FAQS, VIP_PERKS, CONFERENCE_HISTORY, MISSION_DR_CK } from '../data/content';
+import {
+  LINKS,
+  FAQS,
+  TIERS,
+  CONFERENCE_HISTORY,
+  MISSION_DR_CK,
+  CONF,
+  EARLY_BIRD,
+} from '../data/content';
 
 function FAQItem({ q, a, isOpen, onClick }) {
   return (
@@ -26,6 +34,90 @@ function FAQItem({ q, a, isOpen, onClick }) {
   );
 }
 
+function TierCard({ tier }) {
+  const isFeatured = tier.accent === 'magenta';
+  const baseClass =
+    tier.accent === 'magenta'
+      ? 'card-magenta'
+      : tier.accent === 'teal'
+      ? 'card-teal'
+      : 'card-light';
+  const ctaClass =
+    tier.accent === 'light' ? 'btn-ink' : 'btn-light';
+  const href = LINKS[tier.href];
+
+  return (
+    <div className={`${baseClass} relative h-full flex flex-col`}>
+      {isFeatured && (
+        <span
+          className="absolute right-6 top-6 rounded-full px-3 py-1 text-[9px] uppercase tracking-[0.32em]"
+          style={{ border: '2px solid var(--c-gold)', color: '#ffe6a8' }}
+        >
+          Best Value
+        </span>
+      )}
+      <p className={`eyebrow ${tier.accent === 'light' ? 'text-magenta' : 'text-white/85'}`}>
+        {tier.name}
+      </p>
+      <p className={`display-font text-7xl mt-4 ${tier.accent === 'light' ? 'text-ink' : ''}`}
+        style={tier.accent !== 'light' ? { color: '#ffe6a8' } : {}}
+      >
+        {tier.price}
+      </p>
+      <p className={`editorial italic mt-2 ${tier.accent === 'light' ? 'text-ink/70' : 'text-white/95'}`}>
+        {tier.tagline}
+      </p>
+      <div className="gold-line mt-6 w-20" />
+
+      {tier.plusLabel && (
+        <p className={`mt-6 text-[11px] uppercase tracking-[0.22em] font-bold ${tier.accent === 'light' ? 'text-magenta' : 'text-white/85'}`}>
+          {tier.plusLabel}
+        </p>
+      )}
+
+      <ul className={`mt-${tier.plusLabel ? '4' : '8'} space-y-3 ${tier.accent === 'light' ? 'text-ink/80' : 'text-white/95'}`}>
+        {tier.perks.map((p) => (
+          <li key={p} className="flex gap-3">
+            <span
+              className={`mt-1 ${tier.accent === 'light' ? 'text-magenta' : ''}`}
+              style={tier.accent !== 'light' ? { color: '#ffe6a8' } : {}}
+            >
+              ✓
+            </span>
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
+
+      {tier.bonusBlurb && (
+        <div
+          className="mt-6 rounded-2xl px-4 py-3 text-sm"
+          style={{
+            background: 'rgba(255, 230, 168, 0.18)',
+            border: '1px solid rgba(212, 175, 55, 0.6)',
+            color: '#fff',
+          }}
+        >
+          {tier.bonusBlurb}
+        </div>
+      )}
+
+      <div className="mt-auto pt-8">
+        <a href={href} target="_blank" rel="noreferrer" className={`${ctaClass} w-full`}>
+          {tier.cta} →
+        </a>
+        <p
+          className={`mt-3 text-[10px] uppercase tracking-[0.28em] text-center ${
+            tier.accent === 'light' ? 'text-ink/45' : 'text-white/65'
+          }`}
+        >
+          Value: <span className="line-through">{tier.valueAmount}</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function IMMVC() {
   const [openFaq, setOpenFaq] = useState(0);
 
@@ -35,8 +127,8 @@ export default function IMMVC() {
         tone="magenta"
         eyebrow="The International Mamas & Mentors Virtual Conference"
         title="IMMVC"
-        accent="2026"
-        intro="May 9–10, 2026 — virtual, international, and free to attend. The third year of stories that crush hearts and heal them in the same breath."
+        accent={CONF.year}
+        intro={`${CONF.dates} — virtual, international, and free to attend. Three days of stories from across the world.`}
       >
         <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
           Register Free
@@ -49,8 +141,42 @@ export default function IMMVC() {
         </a>
       </PageHero>
 
-      {/* LIVE ARENA — for already-registered attendees */}
+      {/* EARLY BIRD BANNER */}
       <section className="bg-white -mt-14 relative z-10">
+        <div className="container-x">
+          <FadeIn>
+            <div
+              className="relative overflow-hidden rounded-3xl px-6 py-5 sm:px-10 sm:py-6 max-w-4xl mx-auto bg-ink text-white"
+              style={{ border: '2px solid var(--c-gold)' }}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="eyebrow" style={{ color: '#ffe6a8' }}>
+                    🌟 Early Bird · IMMVC 2027
+                  </p>
+                  <p className="editorial text-lg sm:text-xl mt-1 text-white">
+                    Register {EARLY_BIRD.windowLabel}
+                    <span className="text-white/60 font-sans not-italic text-[11px] uppercase tracking-[0.22em] ml-2 block sm:inline">
+                      {EARLY_BIRD.windowDetail}
+                    </span>
+                  </p>
+                </div>
+                <a
+                  href={LINKS.REGISTER}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-magenta text-[10px]"
+                >
+                  Get Early Bird Access →
+                </a>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* LIVE ARENA — for already-registered attendees */}
+      <section className="bg-white pt-10 pb-0">
         <div className="container-x">
           <FadeIn>
             <a
@@ -82,7 +208,7 @@ export default function IMMVC() {
         </div>
       </section>
 
-      {/* MOTHER'S DAY INSIGHT — the why */}
+      {/* MOTHER'S DAY INSIGHT */}
       <section className="bg-white pt-10 pb-0">
         <div className="container-x">
           <FadeIn>
@@ -109,7 +235,7 @@ export default function IMMVC() {
           <FadeIn delay={120} className="lg:col-span-7 space-y-5 text-lg leading-relaxed text-ink/80">
             <p>
               IMMVC is the International Mamas &amp; Mentors Virtual
-              Conference — a global, two-day gathering of women across
+              Conference — a global, three-day gathering of women across
               continents, generations, and life stages. It happens on
               <strong> Mother’s Day weekend</strong> on purpose.
             </p>
@@ -141,27 +267,42 @@ export default function IMMVC() {
             <div className="gold-line mx-auto w-40 mt-8" />
           </FadeIn>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
             {CONFERENCE_HISTORY.map((m, i) => {
-              const isPause = m.year.includes('–');
+              const isPause = m.year.includes('–') && m.year.includes('2');
+              const isUpcoming = m.upcoming;
+              const cls = isUpcoming
+                ? 'card-magenta'
+                : isPause
+                ? 'card-light'
+                : i % 2 === 0
+                ? 'card-teal'
+                : 'card-light';
+              const isLight = cls === 'card-light';
               return (
-                <FadeIn key={m.year} delay={i * 80}>
-                  <div className={isPause ? 'card-light h-full' : i % 2 === 0 ? 'card-magenta h-full' : 'card-teal h-full'}>
-                    <p
-                      className={`display-font text-5xl leading-none ${
-                        isPause ? 'text-magenta' : ''
-                      }`}
-                    >
+                <FadeIn key={m.year} delay={i * 70}>
+                  <div className={`${cls} h-full`}>
+                    {isUpcoming && (
+                      <span
+                        className="absolute right-4 top-4 rounded-full px-3 py-1 text-[9px] uppercase tracking-[0.28em]"
+                        style={{ border: '2px solid var(--c-gold)', color: '#ffe6a8' }}
+                      >
+                        Upcoming
+                      </span>
+                    )}
+                    <p className={`display-font text-5xl leading-none ${isLight ? 'text-magenta' : ''}`}>
                       {m.year}
                     </p>
                     <div
                       className="mt-3 w-12 h-px"
-                      style={{ background: isPause ? 'var(--c-gold)' : 'rgba(255,255,255,0.6)' }}
+                      style={{
+                        background: isLight ? 'var(--c-gold)' : 'rgba(255,255,255,0.6)',
+                      }}
                     />
-                    <h3 className={`editorial text-xl mt-4 ${isPause ? 'text-ink' : ''}`}>
+                    <h3 className={`editorial text-lg mt-4 ${isLight ? 'text-ink' : ''}`}>
                       {m.headline}
                     </h3>
-                    <p className={`mt-3 text-sm leading-relaxed ${isPause ? 'text-ink/75' : 'text-white/90'}`}>
+                    <p className={`mt-3 text-sm leading-relaxed ${isLight ? 'text-ink/75' : 'text-white/90'}`}>
                       {m.body}
                     </p>
                   </div>
@@ -172,11 +313,11 @@ export default function IMMVC() {
         </div>
       </section>
 
-      {/* IMMVC 2026 DETAILS */}
+      {/* IMMVC 2027 DETAILS */}
       <section className="section bg-white">
         <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
-            <p className="eyebrow-teal">IMMVC 2026</p>
+            <p className="eyebrow-teal">IMMVC {CONF.year}</p>
             <h2 className="h-display mt-4 text-ink">
               Save the dates.
               <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: 'var(--c-gold-dark)' }}>
@@ -184,14 +325,17 @@ export default function IMMVC() {
               </span>
             </h2>
             <div className="gold-line mx-auto w-40 mt-8" />
+            <p className="mt-6 editorial italic text-ink/65 text-lg">
+              {CONF.datesLong}
+            </p>
           </FadeIn>
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: 'When', value: 'May 9–10, 2026' },
-              { label: 'Where', value: '100% Virtual · Global' },
-              { label: 'Format', value: 'Pre-recorded + Live' },
-              { label: 'Lounge', value: 'During + 3 days after' },
+              { label: 'When', value: CONF.dates },
+              { label: 'Where', value: CONF.location },
+              { label: 'Format', value: CONF.format },
+              { label: 'Lounge', value: CONF.lounge },
             ].map((item, i) => (
               <FadeIn key={item.label} delay={i * 60}>
                 <div className="card-light text-center h-full">
@@ -203,7 +347,6 @@ export default function IMMVC() {
             ))}
           </div>
 
-          {/* Full schedule CTA */}
           <FadeIn delay={300}>
             <div className="mt-12 text-center">
               <a
@@ -212,7 +355,7 @@ export default function IMMVC() {
                 rel="noopener noreferrer"
                 className="btn-magenta"
               >
-                View the Full 2026 Schedule →
+                View the Full {CONF.year} Schedule →
               </a>
               <p className="mt-3 text-[11px] uppercase tracking-[0.28em] text-ink/55">
                 immvc.mamasandmentors.com/schedule2026
@@ -222,7 +365,7 @@ export default function IMMVC() {
         </div>
       </section>
 
-      {/* TICKETS */}
+      {/* TICKETS — three tiers */}
       <section className="section bg-blush-soft">
         <div className="container-x">
           <FadeIn className="text-center max-w-3xl mx-auto">
@@ -236,67 +379,12 @@ export default function IMMVC() {
             <div className="gold-line mx-auto w-40 mt-8" />
           </FadeIn>
 
-          <div className="mt-16 grid gap-8 lg:grid-cols-2 lg:items-stretch">
-            {/* GENERAL */}
-            <FadeIn>
-              <div className="card-light h-full flex flex-col">
-                <p className="eyebrow-magenta">General Access</p>
-                <p className="display-font text-7xl mt-4 text-ink/90">FREE</p>
-                <div className="gold-line mt-6 w-24" />
-                <ul className="mt-8 space-y-4 text-ink/80">
-                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Live access to all main sessions</li>
-                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Interactive Q&amp;A participation</li>
-                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Basic networking &amp; general chat access</li>
-                  <li className="flex gap-3"><span className="text-magenta mt-1">✦</span> Digital conference workbook</li>
-                </ul>
-                <div className="mt-auto pt-10">
-                  <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-ink w-full">
-                    Register Free
-                  </a>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* VIP */}
-            <FadeIn delay={120}>
-              <div className="relative h-full flex flex-col rounded-3xl p-10 text-white overflow-hidden bg-stage-pink"
-                style={{ boxShadow: '0 30px 70px -25px rgba(219,61,158,0.55), inset 0 0 0 2px var(--c-gold)' }}
-              >
-                <span className="absolute right-6 top-6 rounded-full px-4 py-1 text-[10px] uppercase tracking-[0.32em]"
-                  style={{ border: '2px solid var(--c-gold)', color: '#ffe6a8' }}
-                >
-                  Best Value
-                </span>
-                <p className="eyebrow text-white/85">VIP Pass</p>
-                <p className="display-font text-7xl mt-4" style={{ color: '#ffe6a8' }}>$147</p>
-                <p className="editorial italic mt-2 text-white/95">
-                  The most value ever given at IMMVC.
-                </p>
-                <div className="gold-line mt-6 w-24" />
-
-                <ul className="mt-8 space-y-5 text-white/95">
-                  {VIP_PERKS.map((perk) => (
-                    <li key={perk.title} className="flex gap-3">
-                      <span className="mt-1 text-lg">{perk.color === 'magenta' ? '🩷' : '🩵'}</span>
-                      <div>
-                        <p className="font-bold">{perk.title}</p>
-                        <p className="text-white/90 text-sm leading-relaxed">{perk.body}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-10 editorial italic text-center text-lg" style={{ color: '#ffe6a8' }}>
-                  All of this for just <strong>$147!</strong>
-                </p>
-
-                <div className="mt-6">
-                  <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ink w-full">
-                    Become a VIP →
-                  </a>
-                </div>
-              </div>
-            </FadeIn>
+          <div className="mt-16 grid gap-8 lg:grid-cols-3 lg:items-stretch">
+            {TIERS.map((tier, i) => (
+              <FadeIn key={tier.key} delay={i * 100}>
+                <TierCard tier={tier} />
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -339,7 +427,7 @@ export default function IMMVC() {
         <div className="container-x relative text-center">
           <FadeIn>
             <h2 className="h-display">
-              Two days. One movement.
+              Three days. One movement.
               <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: '#ffe6a8' }}>
                 Your seat is waiting.
               </span>

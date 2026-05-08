@@ -76,7 +76,7 @@ export default function Community() {
               <span className="gold-vert-line" style={{ left: '6%' }} />
               <span className="gold-vert-line" style={{ right: '6%' }} />
               <div className="relative grid lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-7">
+                <div className="lg:col-span-6">
                   <p className="eyebrow text-white/90">The Sunday Reset</p>
                   <h2 className="h-display mt-4">
                     Reset, refill,
@@ -89,18 +89,67 @@ export default function Community() {
                     A weekly gathering for the women in our community — a soft
                     place to land, breathe, and start the week refilled.
                   </p>
+                  <div className="mt-8">
+                    <a
+                      href={LINKS.SUNDAY_RESET}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-light"
+                    >
+                      Join the Sunday Reset →
+                    </a>
+                  </div>
                 </div>
-                <div className="lg:col-span-5 lg:text-right">
-                  <a
-                    href={LINKS.SUNDAY_RESET}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-light"
-                  >
-                    Join the Sunday Reset →
-                  </a>
+                <div className="lg:col-span-6">
+                  <Photo
+                    photo={PHOTOS.sundayReset}
+                    ratio="1/1"
+                    framed={false}
+                    alt="Sunday Reset"
+                    tone="ink"
+                    className="bg-white/10"
+                  />
                 </div>
               </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* EMPOWERMENT PORTAL */}
+      <section className="section bg-blush-soft">
+        <div className="container-x grid lg:grid-cols-12 gap-12 items-center">
+          <FadeIn className="lg:col-span-5">
+            <Photo
+              photo={PHOTOS.empowermentPortal}
+              ratio="4/5"
+              tone="magenta"
+              alt="Empowerment Portal"
+            />
+          </FadeIn>
+          <FadeIn delay={120} className="lg:col-span-7">
+            <p className="eyebrow-magenta">Inside the Community</p>
+            <h2 className="h-display mt-4 text-ink">
+              The Empowerment
+              <span className="block editorial italic font-normal normal-case tracking-normal" style={{ color: 'var(--c-gold-dark)' }}>
+                Portal.
+              </span>
+            </h2>
+            <div className="gold-line mt-6 w-32" />
+            <p className="mt-6 text-lg text-ink/80 leading-relaxed max-w-xl">
+              An always-on space inside the community where mamas and mentors
+              gather to grow — tools, teachings, and conversations to keep you
+              walking boldly in your purpose between gatherings.
+            </p>
+            <div className="mt-8">
+              <a
+                href={LINKS.JOIN_COMMUNITY}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-magenta"
+              >
+                Step Inside the Community →
+              </a>
             </div>
           </FadeIn>
         </div>
@@ -125,7 +174,7 @@ export default function Community() {
               { t: 'Sunday Reset', b: 'A weekly gathering to reset, refill, and start the week soft and grounded.' },
               { t: 'Monthly Networking', b: 'Cross-cultural conversations with women from every continent — a global table of mamas and mentors.' },
               { t: 'Bi-Weekly Prayer & Encouragement', b: 'A consistent, sacred gathering to lift one another up through every chapter.' },
-              { t: 'Annual Flagship Conference', b: 'IMMVC is the heartbeat of the movement — two days of teaching, story, and celebration every May.' },
+              { t: 'Annual Flagship Conference', b: 'IMMVC is the heartbeat of the movement — three days of teaching, story, and celebration every May.' },
             ].map((r, i) => (
               <FadeIn key={r.t} delay={i * 70}>
                 <div className="card-light h-full">

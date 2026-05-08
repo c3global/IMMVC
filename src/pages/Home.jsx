@@ -188,8 +188,8 @@ export default function Home() {
             </h2>
             <div className="gold-line w-40 mt-8" />
             <p className="mt-8 text-lg text-white/95 leading-relaxed max-w-2xl">
-              <strong>May 9–10, 2026.</strong> Two days. 100% virtual.
-              International. Free general access. VIP $147.
+              <strong>May 5–7, 2027.</strong> Three days. 100% virtual.
+              International. Free general access. Insider Pass $77. VIP $147.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-light">
@@ -203,15 +203,15 @@ export default function Home() {
 
           <FadeIn delay={120} className="lg:col-span-5">
             <div className="quote-card text-center">
-              <p className="eyebrow-magenta">Save the Dates</p>
-              <p className="display-font text-7xl mt-4 text-ink">May 9–10</p>
-              <p className="editorial text-2xl mt-2 text-ink/70">2026</p>
+              <p className="eyebrow-magenta">Save the Dates · IMMVC 2027</p>
+              <p className="display-font text-7xl mt-4 text-ink">May 5–7</p>
+              <p className="editorial text-2xl mt-2 text-ink/70">2027 · Wed–Fri</p>
               <div className="gold-line my-6 mx-auto w-24" />
               <ul className="space-y-2 text-sm text-ink/80 text-left">
                 <li>✦ 100% Virtual · International</li>
                 <li>✦ Free general access</li>
-                <li>✦ VIP Pass — $147</li>
-                <li>✦ Live Q&amp;A + networking</li>
+                <li>✦ Insider Pass — $77</li>
+                <li>✦ VIP Swag Bag — $147</li>
               </ul>
             </div>
           </FadeIn>

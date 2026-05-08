@@ -21,11 +21,34 @@ export default function Photo({
 
   const [src, setSrc] = useState(initialSrc);
   const [errored, setErrored] = useState(false);
+  const [triedAlt, setTriedAlt] = useState(false);
 
   useEffect(() => {
     setSrc(initialSrc);
     setErrored(false);
+    setTriedAlt(false);
   }, [initialSrc]);
+
+  // Swap .jpg <-> .png on the same base name. Lets either extension
+  // work without the user knowing which one was wired in code.
+  function altExtension(s) {
+    if (!s) return null;
+    if (s.endsWith('.jpg') || s.endsWith('.JPG')) return s.replace(/\.jpg$/i, '.png');
+    if (s.endsWith('.png') || s.endsWith('.PNG')) return s.replace(/\.png$/i, '.jpg');
+    return null;
+  }
+
+  function handleError() {
+    if (!triedAlt) {
+      const alt = altExtension(initialSrc);
+      if (alt) {
+        setSrc(alt);
+        setTriedAlt(true);
+        return;
+      }
+    }
+    setErrored(true);
+  }
 
   const overlay =
     tone === 'magenta'
@@ -47,7 +70,7 @@ export default function Photo({
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
             decoding="async"
-            onError={() => setErrored(true)}
+            onError={handleError}
           />
           <div className={`absolute inset-0 pointer-events-none ${overlay}`} />
         </>
