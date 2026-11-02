@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { LINKS } from '../data/content';
 
 const KEY = 'mm_release_popup_dismissed';
-const DELAY_MS = 14000;
+const DELAY_MS = 5000;
 
 function wasDismissed() {
   try {
@@ -23,7 +23,7 @@ function rememberDismissed() {
 
 export default function ReleasePopup() {
   const { pathname } = useLocation();
-  const [visible, setVisible] = useState(false);
+  const [mode, setMode] = useState(null); // null | 'side' | 'exit'
   const [gone, setGone] = useState(false);
 
   // The conference page keeps its own registration focus.
@@ -31,27 +31,47 @@ export default function ReleasePopup() {
 
   useEffect(() => {
     if (suppressed || gone || wasDismissed()) return undefined;
-    const t = setTimeout(() => setVisible(true), DELAY_MS);
-    return () => clearTimeout(t);
+    const t = setTimeout(() => setMode((m) => m || 'side'), DELAY_MS);
+    // Exit intent (desktop): the pointer leaves through the top of the window.
+    const onOut = (e) => {
+      if (e.relatedTarget === null && e.clientY <= 0) setMode('exit');
+    };
+    document.addEventListener('mouseout', onOut);
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener('mouseout', onOut);
+    };
   }, [suppressed, gone]);
 
   useEffect(() => {
-    if (suppressed) setVisible(false);
+    if (suppressed) setMode(null);
   }, [suppressed]);
+
+  useEffect(() => {
+    if (mode !== 'exit') return undefined;
+    const onKey = (e) => e.key === 'Escape' && dismiss();
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [mode]);
 
   const dismiss = () => {
     rememberDismissed();
-    setVisible(false);
+    setMode(null);
     setGone(true);
   };
 
-  if (!visible || gone) return null;
+  if (!mode || gone) return null;
+  const exit = mode === 'exit';
 
-  return (
+  const card = (
     <aside
       role="dialog"
       aria-label="The Release app, Early Beta"
-      className="fixed bottom-4 right-4 z-[60] w-[calc(100vw-2rem)] max-w-[380px] animate-fadeUp overflow-hidden rounded-2xl bg-ink text-white shadow-luxe sm:bottom-6 sm:right-6"
+      className={
+        exit
+          ? 'relative w-full max-w-[440px] animate-fadeUp overflow-hidden rounded-2xl bg-ink text-white shadow-luxe'
+          : 'fixed bottom-4 right-4 z-[60] w-[calc(100vw-2rem)] max-w-[380px] animate-fadeUp overflow-hidden rounded-2xl bg-ink text-white shadow-luxe sm:bottom-6 sm:right-6'
+      }
       style={{ border: '2px solid var(--c-gold)' }}
     >
       <button
@@ -66,7 +86,7 @@ export default function ReleasePopup() {
       <img
         src="/release/release-prayer-card.webp"
         alt="The Release: An honest prayer"
-        className="block h-[272px] w-full object-cover object-top"
+        className={`block w-full object-cover object-top ${exit ? "h-[315px]" : "h-[272px]"}`}
         loading="lazy"
       />
 
@@ -96,5 +116,15 @@ export default function ReleasePopup() {
         </div>
       </div>
     </aside>
+  );
+
+  if (!exit) return card;
+  return (
+    <div
+      className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto bg-ink/80 p-4 backdrop-blur-sm"
+      onClick={(e) => e.target === e.currentTarget && dismiss()}
+    >
+      {card}
+    </div>
   );
 }
