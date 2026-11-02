@@ -14,6 +14,7 @@ export const LINKS = {
   JOIN_COMMUNITY:
     'https://community.c3global.co/communities/groups/mama-mentor-nexus/home?invite=69fc72c1876900a91b76921d',
   SUNDAY_RESET: 'https://prayer.mamasandmentors.com/go',
+  RELEASE: 'https://sales.mamasandmentors.com/the-release/sales-page',
   ASSESSMENT: '[ASSESSMENT_LINK]',
   VIP_SWAG_BAG: 'https://register.mamasandmentors.com/vip-swag-bag-909920',
   INSTAGRAM: 'https://www.instagram.com/immvc2026',

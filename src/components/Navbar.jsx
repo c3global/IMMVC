@@ -30,14 +30,14 @@ export default function Navbar() {
           <Logo variant="color" height={scrolled ? 44 : 52} className="transition-all duration-500" />
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-7">
           {NAV_PRIMARY.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `relative text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 whitespace-nowrap ${
+                `relative text-[11px] font-bold uppercase tracking-[0.12em] 2xl:tracking-[0.18em] transition-colors duration-300 whitespace-nowrap ${
                   isActive ? 'text-magenta' : 'text-ink/75 hover:text-magenta'
                 }`
               }
@@ -58,10 +58,17 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden xl:block">
+        <div className="hidden xl:flex items-center gap-2 2xl:gap-3">
+          <a
+            href={LINKS.RELEASE}
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-[var(--c-gold)] px-4 py-[10px] text-[11px] font-bold uppercase tracking-[0.18em] text-magenta transition hover:bg-[var(--c-gold)] hover:text-ink"
+          >
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-magenta" />
+            The Release
+          </a>
           <a
             href={LINKS.REGISTER}
-            className="btn-magenta text-[11px]"
+            className="btn-magenta whitespace-nowrap text-[11px]"
             target="_blank"
             rel="noreferrer"
           >
@@ -105,8 +112,14 @@ export default function Navbar() {
             </NavLink>
           ))}
           <a
+            href={LINKS.RELEASE}
+            className="mt-5 inline-flex self-start items-center rounded-full border-2 border-[var(--c-gold)] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-magenta"
+          >
+            The Release App
+          </a>
+          <a
             href={LINKS.REGISTER}
-            className="btn-magenta mt-5 self-start"
+            className="btn-magenta mt-3 self-start"
             target="_blank"
             rel="noreferrer"
           >

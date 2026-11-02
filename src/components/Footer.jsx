@@ -60,6 +60,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a href={LINKS.RELEASE} className="hover:text-[var(--c-gold-light)] transition font-bold text-blush">
+                The Release App · Early Beta
+              </a>
+            </li>
+            <li>
               <a href={LINKS.JOIN_COMMUNITY} target="_blank" rel="noreferrer" className="hover:text-[var(--c-gold-light)] transition">
                 Join the Community
               </a>
