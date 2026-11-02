@@ -64,9 +64,9 @@ export default function ReleasePopup() {
       </button>
 
       <img
-        src="/release/the-release-app.webp"
-        alt="The Release app: for everything you've been carrying"
-        className="block w-full"
+        src="/release/release-prayer-card.webp"
+        alt="The Release: An honest prayer"
+        className="block h-[272px] w-full object-cover object-top"
         loading="lazy"
       />
 

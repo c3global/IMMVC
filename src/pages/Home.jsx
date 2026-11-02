@@ -42,7 +42,7 @@ export default function Home() {
 
         <div className="container-x relative grid lg:grid-cols-12 gap-12 items-center">
           <FadeIn className="lg:col-span-7 text-center lg:text-left">
-            <p className="eyebrow-magenta mb-6">{TAGLINE}</p>
+            <p className="eyebrow-magenta lg:!text-ink mb-6">{TAGLINE}</p>
             <h1 className="h-hero text-ink">
               {HERO_HEADLINE_LINES.map((line, i) => (
                 <span key={i} className="block">
@@ -58,7 +58,7 @@ export default function Home() {
               {HERO_SUB}
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-magenta">
+              <a href={LINKS.REGISTER} target="_blank" rel="noreferrer" className="btn-magenta lg:!bg-none lg:!bg-white lg:!text-ink lg:border-2 lg:border-[var(--c-gold)]">
                 Register Free
               </a>
               <a href={LINKS.VIP} target="_blank" rel="noreferrer" className="btn-ink">
