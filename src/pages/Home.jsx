@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import FadeIn from '../components/FadeIn';
 import Photo from '../components/Photo';
 import QuoteCard from '../components/QuoteCard';
+import SocialWall from '../components/SocialWall';
 import {
   LINKS,
   HERO_HEADLINE_LINES,
@@ -293,6 +294,9 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
+
+      {/* SOCIAL WALL — live feed via Fouita */}
+      <SocialWall />
 
       {/* WELCOME GORGEOUS — signature closing */}
       <section className="relative overflow-hidden py-24 sm:py-32 bg-stage-pink text-white">
